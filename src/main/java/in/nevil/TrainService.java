@@ -1,4 +1,4 @@
-package in.nevil.Service;
+package in.nevil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,6 @@ public class TrainService {
 	}
 	public static Map<String,String>getDisplayTrainName()  {
 		// System.out.println(trainName);// to display the TrainName in Console
-		
 		return trainNames;
 	}
 
