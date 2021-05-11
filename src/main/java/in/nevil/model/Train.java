@@ -1,9 +1,9 @@
 package in.nevil.model;
 
 public class Train {
-	public String trainName;
-	public String trainNumber;
-	public int availableTickets;
+	private String trainName;
+	private String trainNumber;
+	private int availableTickets;
 
 	public Train(String trainName, String trainNumber, int avilableTickets) {
 		super();

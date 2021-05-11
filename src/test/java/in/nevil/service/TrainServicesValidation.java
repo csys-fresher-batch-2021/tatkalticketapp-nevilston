@@ -11,11 +11,11 @@ import in.nevil.model.Train;
 public class TrainServicesValidation {
 	//It will display the Number of trains displayed in list is correct 
 	@Test
-	public void displayTrainNames() {
+	public void displayTrainNamesTest() {
 		List<Train>trainNames=TrainService.getAllTrains();
 		assertEquals(4,trainNames.size());
 	}
-	public void displayTrainNames2() {
+	public void displayTrainNames2Test() {
 		List<Train>trainNames=TrainService.getAllTrains();	
 		assertNotEquals(5,trainNames.size());
 	}
