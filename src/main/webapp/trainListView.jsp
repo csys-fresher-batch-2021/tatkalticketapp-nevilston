@@ -15,6 +15,7 @@
 	<main class="container-fluid">
 		<h3>List of Trains</h3>
 		<table class="table table-bordered">
+		<caption>Due to Covid-19 Less Trains Are Operated</caption>
 		<thead>
 		<tr>
 		<th scope="col" >S.NO</th>
