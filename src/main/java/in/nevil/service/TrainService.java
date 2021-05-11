@@ -6,6 +6,10 @@ import java.util.List;
 import in.nevil.model.Train;
 
 public class TrainService {
+	
+	private TrainService() {
+	    throw new IllegalStateException("Utility class");
+	  }
 	//Array  initializing 
 	
 	private static List<Train> trainList= new ArrayList<Train>();	

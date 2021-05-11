@@ -17,11 +17,10 @@
 		<table class="table table-bordered">
 		<thead>
 		<tr>
-		<td></td>
-		<th>S.NO</th>
-		<th>Train No</th>
-		<th>Train Name</th>
-		<th>Available TIckets</th>
+		<th scope="col" >S.NO</th>
+		<th scope="col">Train No</th>
+		<th scope="col">Train Name</th>
+		<th scope="col">Available TIckets</th>
 		</tr>
 		</thead>
 		<tbody>
