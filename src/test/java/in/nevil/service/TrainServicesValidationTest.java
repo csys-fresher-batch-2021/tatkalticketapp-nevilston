@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import in.nevil.model.Train;
 
-public class TrainServicesValidation {
+public class TrainServicesValidationTest {
 	//It will display the Number of trains displayed in list is correct 
 	@Test
 	public void displayTrainNamesTest() {

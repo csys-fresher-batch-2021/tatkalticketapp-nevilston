@@ -12,7 +12,7 @@ public class TrainService {
 	  }
 	//Array  initializing 
 	
-	private static List<Train> trainList= new ArrayList<Train>();	
+	private static List<Train> trainList= new ArrayList<>();	
 	// Adding Train Name and Train Number 
 	static {
 		trainList.add(new Train("Madurai Express","12345M",190));
