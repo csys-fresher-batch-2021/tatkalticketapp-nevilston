@@ -14,6 +14,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>List of Trains</h3>
+		<!-- Table Is Created  -->
 		<table class="table table-bordered">
 			<caption>Due to Covid-19 Less Trains Are Operated</caption>
 			<thead>
@@ -44,6 +45,7 @@
 				}
 				%>
 			</tbody>
+			<!-- Added the Details of the Train In the Table -->
 		</table>
 		<a href="addTrain.jsp">Add Train</a>
 

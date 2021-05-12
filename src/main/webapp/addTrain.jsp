@@ -7,7 +7,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Add New Train Route</h3>
-		<!-- <form action="addproduct_action.jsp">-->
+		<!--HTML Web Page For adding Train -->
 		<form action="AddTrainServlet" method="get">
 		<label for="newTrainName">Train Number</label>
 		<input type="text" name="trainNumber" placeholder="Enter Train Number" required autofocus />
