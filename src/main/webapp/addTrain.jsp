@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Add Product</title>
+<title>Add Train</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>

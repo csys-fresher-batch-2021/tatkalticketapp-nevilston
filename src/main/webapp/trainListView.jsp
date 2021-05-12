@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
 <head>
+<title>Train List</title>
 <meta content="text/html; charset=utf-8" />
 </head>
 <title>Online Train Booking</title>

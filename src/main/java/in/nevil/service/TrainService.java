@@ -27,10 +27,10 @@ public class TrainService {
 
 	@SuppressWarnings("unlikely-arg-type")
 	public static boolean addTrain(String newtrainName, String newtrainNumber, int newavailableTickets) {
-		// TODO: call validation and check productName
+		//  call validation and check productName
 		boolean istrain = false;
-		// System.out.println("Successfully added " + trainName);
-		if (trainList.contains(newtrainName)) {
+		
+		if (trainList.contains("newtrainName")) {
 			istrain = false;
 		} else {
 			trainList.add(new Train(newtrainName, newtrainNumber, newavailableTickets));
