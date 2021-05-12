@@ -5,7 +5,6 @@
 <html lang="en">
 <head>
 <head>
-<title>A page written in english</title>
 <meta content="text/html; charset=utf-8" />
 </head>
 <title>Online Train Booking</title>
