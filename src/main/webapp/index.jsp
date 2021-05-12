@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.time.LocalDate"%>
+
 <html>
 <head>
 <title>Online Train Booking</title>
@@ -5,9 +8,9 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<h3>Welcome To Takkal Train Ticket Booking </h3>
-		
-		
+		<h3>Welcome To Takkal Train Ticket Booking</h3>
+
+
 	</main>
 </body>
 </html>
