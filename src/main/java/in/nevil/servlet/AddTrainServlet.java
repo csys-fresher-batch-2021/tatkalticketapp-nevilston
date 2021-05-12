@@ -30,12 +30,14 @@ public class AddTrainServlet extends HttpServlet {
 
 		// checking the TrainList 
 		boolean isAddTrain = TrainService.addTrain(trainName, trainNumber, seatAvailables);
+	
 		if (isAddTrain) {
 			response.sendRedirect("trainListView.jsp");
-		} else {
+		}
+		 else {
 			String errorMessage = "Unable to Add Train";
 			response.sendRedirect("addTrain.jsp?errorMessage=" + errorMessage);
 		}
-	}
-
-}
+	
+		}
+		}
