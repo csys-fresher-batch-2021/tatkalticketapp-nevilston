@@ -11,7 +11,7 @@ public class UserService {
 		//Default constructor
 	}
 
-	private final static Map<Long, String> adminCredentialHashTable = new HashMap<>();
+	private  static Map<Long, String> adminCredentialHashTable = new HashMap<>();
 
 	static {
 		adminCredentialHashTable.put(9566087158l, "@Password123");

@@ -9,11 +9,11 @@ public class UserValidator {
 			//Default constructor
 		}
 		
-		public static boolean userIdFormatValidation(String UserId) {
+		public static boolean userIdFormatValidation(String userId) {
 			boolean isValidFormat= false;
 			try {
 				@SuppressWarnings("unused")
-				long user =Long.parseLong(UserId);
+				long user =Long.parseLong(userId);
 				isValidFormat= true;
 			}
 			catch(Exception e){
