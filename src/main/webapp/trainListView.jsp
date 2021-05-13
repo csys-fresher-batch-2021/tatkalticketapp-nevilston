@@ -1,6 +1,7 @@
 <%@page import="in.nevil.model.Train"%>
 <%@page import="in.nevil.service.TrainService"%>
 <%@page import="java.util.List"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +48,8 @@
 			</tbody>
 			<!-- Added the Details of the Train In the Table -->
 		</table>
+		 
+    
 		<a href="addTrain.jsp">Add Train</a>
 
 	</main>
