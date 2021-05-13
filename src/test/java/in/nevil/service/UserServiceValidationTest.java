@@ -36,7 +36,7 @@ public class UserServiceValidationTest {
 			long userId = 9566087158l;
 			String password =  "@password123";
 			boolean inValidCredentials = UserService.adminValidation(userId, password);
-			assertTrue(inValidCredentials);	
+			assertFalse(inValidCredentials);	
 		}	
 		
 		/**

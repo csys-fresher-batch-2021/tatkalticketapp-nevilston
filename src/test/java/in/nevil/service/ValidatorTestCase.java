@@ -62,7 +62,7 @@ public class ValidatorTestCase {
 	 */
 	@Test
 	public void isValidEmployeeIdValidLengthTest() { 
-		long userNumber = 12345l;
+		long userNumber = 9884107969l;
 		boolean isValidUserId = FeildValidator.isValidUserIdLength(userNumber);
 		assertTrue(isValidUserId);
 	}
@@ -72,8 +72,8 @@ public class ValidatorTestCase {
 	 */
 	@Test
 	public void isValidEmployeeIdInvalidLengthTest() { 
-		long employeeName = 267l;
-		boolean isValidUserId = FeildValidator.isValidUserIdLength(employeeName);
+		long userNumber = 267l;
+		boolean isValidUserId = FeildValidator.isValidUserIdLength(userNumber);
 		assertFalse(isValidUserId);
 	}
 	

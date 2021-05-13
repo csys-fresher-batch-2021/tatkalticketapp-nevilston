@@ -31,7 +31,7 @@ public class UserValidator {
 		public static boolean userIdValidation(long userId) {
 			boolean isValidAllParameters = false;
 			boolean isEmptyAndNull = FeildValidator.isUserIdEmptyAndNull(userId);
-			boolean isValidUserIdLength = FeildValidator.isUserIdEmptyAndNull(userId);
+			boolean isValidUserIdLength = FeildValidator.isValidUserIdLength(userId);
 			
 			
 			if(isEmptyAndNull && isValidUserIdLength) {

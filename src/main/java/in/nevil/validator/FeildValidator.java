@@ -25,7 +25,7 @@ public class FeildValidator {
 	
 	public static boolean isValidUserIdLength(long userId) {
 		boolean isValidEmployeeId = false;
-		if(userId== 10) {
+		if(Long.toString(userId).length() == 10) {
 			isValidEmployeeId = true;
 		}
 		return isValidEmployeeId;
