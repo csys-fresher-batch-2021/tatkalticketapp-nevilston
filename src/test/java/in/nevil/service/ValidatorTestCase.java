@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import in.nevil.validator.UserValidator;
-import in.nevil.validator.feildValidator;
+import in.nevil.validator.FeildValidator;
 
 public class ValidatorTestCase {
 
@@ -33,7 +33,7 @@ public class ValidatorTestCase {
 	@Test
 	public void isUserIdNull() { 
 		long userNumber = 0;
-		boolean isValidUserId = feildValidator.isUserIdEmptyAndNull(userNumber);
+		boolean isValidUserId = FeildValidator.isUserIdEmptyAndNull(userNumber);
 		assertFalse(isValidUserId);
 	}
 	
@@ -43,7 +43,7 @@ public class ValidatorTestCase {
 	@Test
 	public void isUserIdValidCase() { 
 		long userNumber = 1234567890l;
-		boolean isValidUserId = feildValidator.isUserIdEmptyAndNull(userNumber);
+		boolean isValidUserId = FeildValidator.isUserIdEmptyAndNull(userNumber);
 		assertTrue(isValidUserId);
 	}
 	
@@ -53,7 +53,7 @@ public class ValidatorTestCase {
 	@Test
 	public void isUserIdEmpty() { 
 		long userNumber =000000l;
-		boolean isValidUserId = feildValidator.isUserIdEmptyAndNull(userNumber);
+		boolean isValidUserId = FeildValidator.isUserIdEmptyAndNull(userNumber);
 		assertFalse(isValidUserId);
 	}
 	
@@ -63,7 +63,7 @@ public class ValidatorTestCase {
 	@Test
 	public void isValidEmployeeIdValidLengthTest() { 
 		long userNumber = 12345l;
-		boolean isValidUserId = feildValidator.isValidUserIdLength(userNumber);
+		boolean isValidUserId = FeildValidator.isValidUserIdLength(userNumber);
 		assertTrue(isValidUserId);
 	}
 	
@@ -73,7 +73,7 @@ public class ValidatorTestCase {
 	@Test
 	public void isValidEmployeeIdInvalidLengthTest() { 
 		long employeeName = 267l;
-		boolean isValidUserId = feildValidator.isValidUserIdLength(employeeName);
+		boolean isValidUserId = FeildValidator.isValidUserIdLength(employeeName);
 		assertFalse(isValidUserId);
 	}
 	

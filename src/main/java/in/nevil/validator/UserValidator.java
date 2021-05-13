@@ -9,7 +9,7 @@ public class UserValidator {
 			//Default constructor
 		}
 		
-		public static boolean adminUserNum(String UserId) {
+		public static boolean userIdFormatValidation(String UserId) {
 			boolean isValidFormat= false;
 			try {
 				@SuppressWarnings("unused")
@@ -30,8 +30,8 @@ public class UserValidator {
 		
 		public static boolean userIdValidation(long userId) {
 			boolean isValidAllParameters = false;
-			boolean isEmptyAndNull = feildValidator.isUserIdEmptyAndNull(userId);
-			boolean isValidUserIdLength = feildValidator.isUserIdEmptyAndNull(userId);
+			boolean isEmptyAndNull = FeildValidator.isUserIdEmptyAndNull(userId);
+			boolean isValidUserIdLength = FeildValidator.isUserIdEmptyAndNull(userId);
 			
 			
 			if(isEmptyAndNull && isValidUserIdLength) {

@@ -1,7 +1,7 @@
 package in.nevil.validator;
-public class feildValidator {
+public class FeildValidator {
 	
-	private feildValidator() {
+	private FeildValidator() {
 		//Default Constructor
 	}
 	/**
