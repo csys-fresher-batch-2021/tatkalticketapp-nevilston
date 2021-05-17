@@ -35,8 +35,8 @@
 				%>
 				<tr>
 					<td><%=i%></td>
-					<td><%=train.getTrainName()%></td>
 					<td><%=train.getTrainNumber()%></td>
+					<td><%=train.getTrainName()%></td>
 					<td><%=train.getAvailableTickets()%></td>
 					<td><a
 						href="DeleteTrainServlet?TrainNumber=<%=train.getTrainNumber()%>"
