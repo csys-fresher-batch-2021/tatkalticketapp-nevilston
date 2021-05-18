@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
 		
 			String loginType = request.getParameter("command");
 			String stringAdminNumber =request.getParameter("adminUsernumber");
-				long adminUserNumber =Long.parseLong(stringAdminNumber);	
+				long adminUserNumber =Long.parseLong(stringAdminNumber);
 				String adminPassword = request.getParameter("adminPassword");
 				boolean isValidAdmin = UserService.adminValidation(adminUserNumber, adminPassword);
 				boolean isValidUser = UserService.userValidation(adminUserNumber, adminPassword);

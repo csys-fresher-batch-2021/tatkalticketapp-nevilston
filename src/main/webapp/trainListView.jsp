@@ -44,7 +44,7 @@ String role = (String) session.getAttribute("ROLE");
 					<td><%=train.getTrainName()%></td>
 					<td><%=train.getAvailableTickets()%></td>
 					<% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")){ %>
-					<td><a href ="DateCheck.jsp" class="btn btn-primary">Book</a> <%
+					<td><a href="DateCheck.jsp" class="btn btn-primary">Book</a> <%
 				}
 				%> <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 					<td><a

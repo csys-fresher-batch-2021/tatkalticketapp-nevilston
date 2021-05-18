@@ -18,26 +18,23 @@ public class AddTrainServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
-	 */ 
+	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
-		
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
 		String trainNumber = request.getParameter("trainNumber");
 		String trainName = request.getParameter("trainName");
 		int seatAvailables = Integer.parseInt(request.getParameter("seatAvailable"));
 
-		// checking the TrainList 
+		// checking the TrainList
 		boolean isAddTrain = TrainService.addTrain(trainName, trainNumber, seatAvailables);
-	
+
 		if (isAddTrain) {
 			response.sendRedirect("trainListView.jsp");
-		}
-		 else {
+		} else {
 			String errorMessage = "Unable to Add Train";
 			response.sendRedirect("addTrain.jsp?errorMessage=" + errorMessage);
 		}
-	
-		}
-		}
+
+	}
+}

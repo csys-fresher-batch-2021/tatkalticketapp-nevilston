@@ -18,9 +18,9 @@
 		</h3>
 
 		<form action="LoginServlet" method="post">
-			<input TYPE="radio" name="command" value="Admin"/>Admin
-			<Input TYPE="radio" name="command" value="User"/>User<br><br/>
-			<input type="text" name="adminUsernumber" id="adminUsernumber"
+			<input TYPE="radio" name="command" value="Admin" />Admin <Input
+				TYPE="radio" name="command" value="User" />User<br> <br /> <input
+				type="text" name="adminUsernumber" id="adminUsernumber"
 				placeholder="User Number" required autofocus><br /> <br />
 			<input type="password" name="adminPassword" id="adminPassword"
 				placeholder="password" required><br />
@@ -38,7 +38,7 @@
 		</form>
 
 
-		<br> <a href="index.jsp">User Login</a>
+
 	</main>
 </body>
 </html>

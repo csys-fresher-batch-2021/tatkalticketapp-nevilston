@@ -11,7 +11,7 @@ public class TrainService {
 		throw new IllegalStateException("Utility class");
 	}
 	private static TrainDAO trainDAO = new TrainDAO();
-	private static List<Train> trainList =trainDAO.getTrainList();
+	private static List<Train> trainList =TrainDAO.getTrainList();
 	// Adding Train Name and Train Number
 	
 
