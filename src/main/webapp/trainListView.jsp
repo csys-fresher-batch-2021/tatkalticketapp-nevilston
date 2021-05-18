@@ -1,7 +1,11 @@
+<%@page import="in.nevil.dao.TrainDAO"%>
 <%@page import="in.nevil.model.Train"%>
 <%@page import="in.nevil.service.TrainService"%>
 <%@page import="java.util.List"%>
-
+<%
+String loggedInUsername = (String)session.getAttribute("LOGGED_IN_USER");
+String role = (String) session.getAttribute("ROLE");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,9 +32,10 @@
 			</thead>
 			<tbody>
 				<%
-				List<Train> trains = TrainService.getAllTrains();
+				 final TrainDAO trainDAO = new TrainDAO();
+				 final List<Train> trainList =trainDAO.getTrainList();
 				int i = 0;
-				for (Train train : trains) {
+				for (Train train : trainList) {
 					i++;
 				%>
 				<tr>
@@ -38,9 +43,13 @@
 					<td><%=train.getTrainNumber()%></td>
 					<td><%=train.getTrainName()%></td>
 					<td><%=train.getAvailableTickets()%></td>
+					<% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")){ %>
+					<td><a href ="DateCheck.jsp" class="btn btn-primary">Book</a> <%
+				}
+				%> <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 					<td><a
 						href="DeleteTrainServlet?TrainNumber=<%=train.getTrainNumber()%>"
-						class="btn btn-danger">Delete</a>
+						class="btn btn-danger">Delete</a> <%} %>
 				</tr>
 				<%
 				}
@@ -48,9 +57,9 @@
 			</tbody>
 			<!-- Added the Details of the Train In the Table -->
 		</table>
-		 
-    
-		<a href="addTrain.jsp">Add Train</a>
+
+
+
 
 	</main>
 </body>

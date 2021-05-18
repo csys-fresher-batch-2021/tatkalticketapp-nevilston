@@ -60,7 +60,34 @@ public class UserServiceValidationTest {
 			boolean inValidCredentials = UserService.adminValidation(userId, password);
 			assertFalse(inValidCredentials);	
 		}	
-
+		/**
+		 * valid user registration
+		 */
+		@Test
+		public void userValidationTestValid() { 
+			long  userId = 9566087158l;
+			String password ="Lobo@9145";
+			boolean inValidCredentials = UserService.userValidation(userId, password);
+			assertTrue(inValidCredentials);	
+		}	
+		/**
+		 * invalid user number and valid password
+		 */
+		@Test
+		public void userValidationTestInValidUserNumber() { 
+			long  userId = 9566087159l;
+			String password ="Lobo@9145";
+			boolean inValidCredentials = UserService.userValidation(userId, password);
+			assertFalse(inValidCredentials);	
+		}
+		//both field are empty and null
+		@Test
+		public void userValidationTestInValidFieldValues() { 
+			long  userId = 9566087159l;
+			String password ="Lobo@9145";
+			boolean inValidCredentials = UserService.userValidation(userId, password);
+			assertFalse(inValidCredentials);	
+		}
 	}
 
 
