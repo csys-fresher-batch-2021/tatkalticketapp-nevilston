@@ -17,24 +17,31 @@ public class LoginServlet extends HttpServlet {
 	 @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
+		
 			String loginType = request.getParameter("command");
 			String stringAdminNumber =request.getParameter("adminUsernumber");
-				long adminUserNumber =Long.parseLong(stringAdminNumber);	
+				long adminUserNumber =Long.parseLong(stringAdminNumber);
 				String adminPassword = request.getParameter("adminPassword");
 				boolean isValidAdmin = UserService.adminValidation(adminUserNumber, adminPassword);
-				if (isValidAdmin) {
+				boolean isValidUser = UserService.userValidation(adminUserNumber, adminPassword);
+				if(loginType.equalsIgnoreCase("Admin") && isValidAdmin) {
 					HttpSession session = request.getSession();
 					session.setAttribute("LOGGED_IN_USER", loginType);
+					session.setAttribute("ROLE", "ADMIN");
 					response.sendRedirect("trainListView.jsp");
 				}
+			
+				else if(isValidUser){
+					HttpSession session = request.getSession();
+					session.setAttribute("LOGGED_IN_USER", loginType);
+					session.setAttribute("ROLE", "USER");
+					response.sendRedirect("trainListView.jsp");
+				
 			}
-			catch(Exception e){
-				String message = "Invalid Credentials";
-				response.sendRedirect("login.jsp?errorMessage=" + message);
-			}
-		 
-
+				else {
+					String message = "Invalid Credentials";
+					response.sendRedirect("login.jsp?errorMessage=" + message);
+				}
 
 		
 	}

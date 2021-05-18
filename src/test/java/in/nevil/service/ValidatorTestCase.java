@@ -36,7 +36,7 @@ public class ValidatorTestCase {
 		boolean isValidUserId = FeildValidator.isUserIdEmptyAndNull(userNumber);
 		assertFalse(isValidUserId);
 	}
-	
+
 	/**
 	 * valid long is passed
 	 */
@@ -46,7 +46,7 @@ public class ValidatorTestCase {
 		boolean isValidUserId = FeildValidator.isUserIdEmptyAndNull(userNumber);
 		assertTrue(isValidUserId);
 	}
-	
+
 	/**
 	 * employeeId is empty
 	 */
@@ -56,7 +56,7 @@ public class ValidatorTestCase {
 		boolean isValidUserId = FeildValidator.isUserIdEmptyAndNull(userNumber);
 		assertFalse(isValidUserId);
 	}
-	
+
 	/**
 	 *Valid employeeId length  is validated 
 	 */
@@ -66,7 +66,7 @@ public class ValidatorTestCase {
 		boolean isValidUserId = FeildValidator.isValidUserIdLength(userNumber);
 		assertTrue(isValidUserId);
 	}
-	
+
 	/**
 	 * Invalid employee Id is validated
 	 */
@@ -76,7 +76,7 @@ public class ValidatorTestCase {
 		boolean isValidUserId = FeildValidator.isValidUserIdLength(userNumber);
 		assertFalse(isValidUserId);
 	}
-	
+
 	/**
 	 * password is right
 	 */
@@ -86,9 +86,9 @@ public class ValidatorTestCase {
 		boolean isValidPasswordLength = UserValidator.isValidPasswordFormat(password);
 		assertTrue(isValidPasswordLength);
 	}
-	
-	
-	
+
+
+
 
 }
 

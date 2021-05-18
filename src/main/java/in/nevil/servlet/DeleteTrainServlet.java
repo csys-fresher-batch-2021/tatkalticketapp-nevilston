@@ -14,10 +14,10 @@ import in.nevil.service.TrainService;
 @WebServlet("/DeleteTrainServlet")
 public class DeleteTrainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws  IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String trainNumbertodelete = request.getParameter("TrainNumber");
 		boolean isDelete = TrainService.deleteTrain(trainNumbertodelete);
