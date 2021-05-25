@@ -1,7 +1,6 @@
 package in.nevil.service;
 
 import java.util.List;
-
 import in.nevil.dao.UserDAO;
 import in.nevil.model.User;
 import in.nevil.validator.UserValidator;
@@ -32,7 +31,7 @@ public class RegisterService {
 		boolean isUserIdValid = UserValidator.userIdValidation(userNumber);
 		boolean isValidPasswordFormat = UserValidator.isValidPasswordFormat(userPassword);
 		if (userList.contains(userNumber)) {
-			 isUserRegister=false;
+			isUserRegister = false;
 		} else {
 			if (isUserIdValid && isValidPasswordFormat) {
 				UserDAO.addUser(new User(userName, userNumber, userPassword));

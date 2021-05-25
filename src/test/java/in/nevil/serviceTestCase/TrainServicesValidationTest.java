@@ -1,4 +1,4 @@
-package in.nevil.service;
+package in.nevil.serviceTestCase;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

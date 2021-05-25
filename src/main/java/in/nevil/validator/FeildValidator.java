@@ -7,7 +7,7 @@ public class FeildValidator {
 	}
 
 	/**
-	 * This method verifies whether an employeeId field is null or empty
+	 * This method verifies whether an user id is null or empty
 	 * 
 	 * @param employeeId
 	 * @return
