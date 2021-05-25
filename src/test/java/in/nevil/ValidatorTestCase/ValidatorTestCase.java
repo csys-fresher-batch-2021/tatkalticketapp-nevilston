@@ -1,4 +1,4 @@
-package in.nevil.service;
+package in.nevil.ValidatorTestCase;
 
 import static org.junit.Assert.*;
 

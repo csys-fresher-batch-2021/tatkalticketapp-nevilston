@@ -1,8 +1,10 @@
-package in.nevil.service;
+package in.nevil.serviceTestCase;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import in.nevil.service.UserService;
 
 public class UserServiceValidationTest {
 

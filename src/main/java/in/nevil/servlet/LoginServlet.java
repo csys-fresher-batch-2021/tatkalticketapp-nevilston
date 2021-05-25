@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
 	 @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		try { 
 			String loginType = request.getParameter("command");
 			String stringAdminNumber =request.getParameter("adminUsernumber");
 				long adminUserNumber =Long.parseLong(stringAdminNumber);
@@ -42,7 +42,11 @@ public class LoginServlet extends HttpServlet {
 					String message = "Invalid Credentials";
 					response.sendRedirect("login.jsp?errorMessage=" + message);
 				}
-
+		}catch(Exception e){
+			String error = "Enter Valid Number Format ";
+			response.sendRedirect("login.jsp?error=" + error);
+		}
+		
 		
 	}
 

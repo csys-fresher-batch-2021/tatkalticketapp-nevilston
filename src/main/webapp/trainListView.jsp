@@ -3,7 +3,7 @@
 <%@page import="in.nevil.service.TrainService"%>
 <%@page import="java.util.List"%>
 <%
-String loggedInUsername = (String)session.getAttribute("LOGGED_IN_USER");
+String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
 String role = (String) session.getAttribute("ROLE");
 %>
 <!DOCTYPE html>
@@ -32,8 +32,8 @@ String role = (String) session.getAttribute("ROLE");
 			</thead>
 			<tbody>
 				<%
-				 final TrainDAO trainDAO = new TrainDAO();
-				 final List<Train> trainList =trainDAO.getTrainList();
+				final TrainDAO trainDAO = new TrainDAO();
+				final List<Train> trainList = trainDAO.getTrainList();
 				int i = 0;
 				for (Train train : trainList) {
 					i++;
@@ -43,13 +43,19 @@ String role = (String) session.getAttribute("ROLE");
 					<td><%=train.getTrainNumber()%></td>
 					<td><%=train.getTrainName()%></td>
 					<td><%=train.getAvailableTickets()%></td>
-					<% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")){ %>
+					<%
+					if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")) {
+					%>
 					<td><a href="DateCheck.jsp" class="btn btn-primary">Book</a> <%
-				}
-				%> <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
+ }
+ %> <%
+ if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")) {
+ %>
 					<td><a
 						href="DeleteTrainServlet?TrainNumber=<%=train.getTrainNumber()%>"
-						class="btn btn-danger">Delete</a> <%} %>
+						class="btn btn-danger">Delete</a> <%
+ }
+ %>
 				</tr>
 				<%
 				}

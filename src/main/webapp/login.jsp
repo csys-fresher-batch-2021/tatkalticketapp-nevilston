@@ -22,8 +22,13 @@
 				TYPE="radio" name="command" value="User" />User<br> <br /> <input
 				type="text" name="adminUsernumber" id="adminUsernumber"
 				placeholder="User Number" required autofocus><br /> <br />
-			<input type="password" name="adminPassword" id="adminPassword"
-				placeholder="password" required><br />
+			<%
+			final String error = request.getParameter("error");
+			if (error != null) {
+				out.println("<font color='red'>" + error + "</font>");
+			}
+			%><br /> <input type="password" name="adminPassword"
+				id="adminPassword" placeholder="password" required><br />
 			<%
 			final String errorMessage = request.getParameter("errorMessage");
 			if (errorMessage != null) {
