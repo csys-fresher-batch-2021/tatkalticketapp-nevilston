@@ -33,7 +33,7 @@
 				<button class="btn btn-primary">Check</button>
 				<br />
 			<h3>Types Of Class Available</h3>
-			<table class="table table-bordered">
+			<table class="table table-bordered" aria-describedby="mydesc">
 				<thead>
 					<tr>
 						<th scope="col">CLASS</th>

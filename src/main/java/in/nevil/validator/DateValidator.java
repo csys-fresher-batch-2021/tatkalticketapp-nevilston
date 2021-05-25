@@ -3,6 +3,16 @@ package in.nevil.validator;
 import java.time.LocalDate;
 
 public class DateValidator {
+	private DateValidator() {
+		// Default Constructor
+	}
+
+	/**
+	 * This method verifies whether the date entered correct and valid
+	 * 
+	 * @param employeeId
+	 * @return
+	 */
 	public static boolean journeyDateCheck(String journeyDate) {
 		LocalDate todayDate = LocalDate.now();
 		LocalDate userJourneyDate = LocalDate.parse(journeyDate);
@@ -11,9 +21,8 @@ public class DateValidator {
 		boolean isValid = false;
 		if (todayDate.isBefore(userJourneyDate) && (userJourneyDate.isEqual(afterDate))) {
 			isValid = true;
-			System.out.println("Train Is Availbale for the Date Entered");
+
 		} else {
-			System.out.println("No Trains Avilable on the Date Entered");
 			isValid = false;
 		}
 		return isValid;
