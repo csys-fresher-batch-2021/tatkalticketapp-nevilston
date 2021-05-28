@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.nevil.exceptions.UserAlreadyRegisteredException;
 import in.nevil.service.RegisterService;
 
 /**
@@ -23,15 +24,17 @@ public class RegistrationServlet extends HttpServlet {
 		long userNumber = Long.parseLong(number);
 		String newUserPassword = request.getParameter("newPassword");
 		String confirmnewUserPassword = request.getParameter("confirmNewPassword");
+		try {
 		boolean isPasswordMatched = RegisterService.passwordMatchCheck(newUserPassword, confirmnewUserPassword);
 		boolean isAddUser = RegisterService.addUser(userName, userNumber, confirmnewUserPassword);
 		if (isAddUser && isPasswordMatched) {
 			response.sendRedirect("login.jsp?Message=" + "Registred Sucessfully");
 		} else {
-			String errorMessage = "Entered Password MissMatch / User Already Registred ";
-			response.sendRedirect("registration.jsp?errorMessage=" + errorMessage);
+			throw new UserAlreadyRegisteredException("User Registered Already");
 		}
-
+	} catch(Exception e) {
+		String errorMessage = "Unable To  Register User";
+		response.sendRedirect("registration.jsp?errorMessage=" + errorMessage);
 	}
-
+	 }
 }

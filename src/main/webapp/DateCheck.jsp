@@ -13,7 +13,13 @@
 	<main class="container-fluid">
 		<h3>BOOKING</h3>
 		<form action="AvailabilityCheck" method="get">
-			<label for="dateCheck"> Journey Date</label>
+			<%
+				String trainName = request.getParameter("TrainNumber");
+			%>
+			<h4>
+				The Train Selected is
+				<%=trainName%></h4>
+			<br /> <label for="dateCheck"> Journey Date</label>
 			<p>
 				<input type="date" name="journeydate"
 					placeholder="Enter journey Date " required autofocus></input><br>
@@ -24,7 +30,7 @@
 					placeholder="Enter Ticket Needed" required autofocus></input><br>
 			<p>
 				<%
-				final String errorMessage = request.getParameter("errorMessage");
+					final String errorMessage = request.getParameter("errorMessage");
 				if (errorMessage != null) {
 					out.println("<font color='red'>" + errorMessage + "</font>");
 				}
@@ -32,13 +38,12 @@
 				<br />
 				<button class="btn btn-primary">Check</button>
 				<br />
-			<h3>Types Of Class Available</h3>
+				<h3>Types Of Class Available</h3>
 			<table class="table table-bordered" aria-describedby="mydesc">
 				<thead>
 					<tr>
 						<th scope="col">CLASS</th>
 						<th scope="col">FARE</th>
-
 					</tr>
 				</thead>
 				<tbody>
@@ -50,16 +55,16 @@
 					<tr>
 						<td><%=trainClassType%></td>
 						<td><%=trainClassList.get(trainClassType)%></td>
-
+						<td><a href="getPassangerInfromation.jsp?ClassType=<%=trainClassType%>" class="btn btn-primary">Book</a> 
 						<%
 						}
 						%>
-
 					</tr>
 				</tbody>
-			</table>
-
+			</table>	
+				
 		</form>
+			
 	</main>
 </body>
 </html>

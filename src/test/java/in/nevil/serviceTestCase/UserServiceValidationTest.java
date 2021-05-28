@@ -2,6 +2,8 @@ package in.nevil.serviceTestCase;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+
 import org.junit.Test;
 
 import in.nevil.service.UserService;
@@ -64,19 +66,23 @@ public class UserServiceValidationTest {
 	}	
 	/**
 	 * valid user registration
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
 	@Test
-	public void userValidationTestValid() { 
+	public void userValidationTestValid() throws ClassNotFoundException, SQLException { 
 		long  userId = 9566087158l;
-		String password ="Lobo@9145";
+		String password ="Password@123";
 		boolean inValidCredentials = UserService.userValidation(userId, password);
 		assertTrue(inValidCredentials);	
 	}	
 	/**
 	 * invalid user number and valid password
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
 	@Test
-	public void userValidationTestInValidUserNumber() { 
+	public void userValidationTestInValidUserNumber() throws ClassNotFoundException, SQLException { 
 		long  userId = 9566087159l;
 		String password ="Lobo@9145";
 		boolean inValidCredentials = UserService.userValidation(userId, password);
@@ -84,7 +90,7 @@ public class UserServiceValidationTest {
 	}
 	//both field are empty and null
 	@Test
-	public void userValidationTestInValidFieldValues() { 
+	public void userValidationTestInValidFieldValues() throws ClassNotFoundException, SQLException { 
 		long  userId = 9566087159l;
 		String password ="Lobo@9145";
 		boolean inValidCredentials = UserService.userValidation(userId, password);

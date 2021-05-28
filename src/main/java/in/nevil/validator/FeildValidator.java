@@ -28,11 +28,20 @@ public class FeildValidator {
 	 */
 
 	public static boolean isValidUserIdLength(long userId) {
-		boolean isValidEmployeeId = false;
+		boolean isValidUserId = false;
 		if (Long.toString(userId).length() == 10) {
-			isValidEmployeeId = true;
+			isValidUserId = true;
 		}
-		return isValidEmployeeId;
+		return isValidUserId;
 	}
-
+	public static boolean isPassangerAgeEmptyAndNotNull(int age) {
+		boolean isValidage=false;
+		if(age!=0) {
+			isValidage=true;
+		}
+		else {
+			isValidage= false;
+		}
+		return isValidage;
+	}
 }

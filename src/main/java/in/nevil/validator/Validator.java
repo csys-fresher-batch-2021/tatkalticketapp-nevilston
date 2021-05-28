@@ -3,9 +3,9 @@ package in.nevil.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserValidator {
+public class Validator {
 
-	private UserValidator() {
+	private Validator() {
 		// Default constructor
 	}
 
@@ -37,6 +37,7 @@ public class UserValidator {
 		if (isEmptyAndNull && isValidUserIdLength) {
 			isValidAllParameters = true;
 		}
+		
 		return isValidAllParameters;
 	}
 
@@ -56,5 +57,15 @@ public class UserValidator {
 		}
 		return isValidFormat;
 	}
-
+	
+	public static boolean isValidPassengerName(String passengerName) {
+		boolean isValidPassengerName = false;
+		if(passengerName != null) {
+			isValidPassengerName=true;
+		}
+		else {
+			isValidPassengerName=false;
+		}
+		return isValidPassengerName;
+	}
 }

@@ -1,8 +1,10 @@
 package in.nevil.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import in.nevil.dao.TrainDAO;
+import in.nevil.exceptions.TicketNotAvailableExceptions;
 import in.nevil.model.Train;
 
 public class TicketAvailablity {
@@ -12,10 +14,13 @@ public class TicketAvailablity {
 		//default constructor
 	}
 	//get the trainList details from the TrainDAO
-	private static List<Train> trainList =TrainDAO.getTrainList();
 	
-	public static boolean checkTicketAvailability(int numberOfTicket) {
+	
+	public static boolean checkTicketAvailability(int numberOfTicket) throws ClassNotFoundException, SQLException, TicketNotAvailableExceptions {
 		boolean isAvailable = false;
+		try {
+		TrainDAO trainDAO = new TrainDAO();
+		List<Train> trainList =trainDAO.getTrainDetails();
 		for (Train train : trainList) {
 			/**
 			 * per user only Two ticket is allowed and availability check
@@ -24,8 +29,13 @@ public class TicketAvailablity {
 				isAvailable = true;
 			}
 			else {
-				isAvailable = false;
+				isAvailable =false;	
 			}
+		}
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			throw new TicketNotAvailableExceptions("Ticket Not Available");
 		}
 		return isAvailable;
 	}

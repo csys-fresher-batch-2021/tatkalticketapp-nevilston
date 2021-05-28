@@ -1,50 +1,34 @@
 package in.nevil.service;
 
-import java.util.List;
-
+import java.sql.SQLException;
+import in.nevil.exceptions.CannotAddTrainException;
 import in.nevil.dao.TrainDAO;
 import in.nevil.model.Train;
+import in.nevil.validator.TrainServiceValidator;
 
 public class TrainService {
 
 	private TrainService() {
 		throw new IllegalStateException("Utility class");
 	}
+
 	private static TrainDAO trainDAO = new TrainDAO();
-	private static List<Train> trainList =TrainDAO.getTrainList();
+
 	// Adding Train Name and Train Number
-	
 
-	
+	public static boolean addTrain(String newtrainName, String newtrainNumber, int newavailableTickets)
+			throws ClassNotFoundException, SQLException, CannotAddTrainException {
+		// call validation and check productName
+		boolean istrain = TrainServiceValidator.isTrainNameExists(newtrainNumber);
+		Train train = (new Train(newtrainName, newtrainNumber, newavailableTickets));
+		if (istrain) {
+			throw new CannotAddTrainException(train.getTrainName() + "- Train Already Added");
 
-	
-	@SuppressWarnings("unlikely-arg-type")
-	public static boolean addTrain(String newtrainName, String newtrainNumber, int newavailableTickets) {
-		//  call validation and check productName
-		boolean istrain = false;
-		
-		if (trainList.contains("newtrainName")) {
-			istrain = false;
 		} else {
-			trainDAO.addTrain(new Train(newtrainName, newtrainNumber, newavailableTickets));
-			istrain = true;
-		}
-		return istrain;
+			trainDAO.addTrain(train);
+			return true;
+			
+					}
 	}
 
-	public static boolean deleteTrain(String trainNumber) {
-		Train searchTrain = null;
-		boolean isDeleted = false;
-		for (Train train : trainList) {
-			if (train.getTrainNumber().equalsIgnoreCase(trainNumber)) {
-				searchTrain = train;
-				break;
-			}
-		}
-		if (searchTrain != null) {
-			trainList.remove(searchTrain);
-			isDeleted = true;
-		}
-		return isDeleted;
-	}
 }
