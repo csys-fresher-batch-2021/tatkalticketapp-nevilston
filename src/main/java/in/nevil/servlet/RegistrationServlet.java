@@ -30,11 +30,12 @@ public class RegistrationServlet extends HttpServlet {
 		if (isAddUser && isPasswordMatched) {
 			response.sendRedirect("login.jsp?Message=" + "Registred Sucessfully");
 		} else {
-			throw new UserAlreadyRegisteredException("User Registered Already");
+			String errorMessage = "Unable To  Register User";
+			response.sendRedirect("registration.jsp?errorMessage=" + errorMessage);
+			
 		}
 	} catch(Exception e) {
-		String errorMessage = "Unable To  Register User";
-		response.sendRedirect("registration.jsp?errorMessage=" + errorMessage);
+		e.getMessage();
 	}
 	 }
 }

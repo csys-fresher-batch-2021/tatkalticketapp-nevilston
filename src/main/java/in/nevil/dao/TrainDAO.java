@@ -52,7 +52,7 @@ public class TrainDAO {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.getMessage();
-			e.printStackTrace();
+			
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}
@@ -72,7 +72,7 @@ public class TrainDAO {
 			pst.executeUpdate();
 			isdeleted = true;
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			
 			e.getMessage();
 		} finally {
 			ConnectionUtil.close(pst, connection);

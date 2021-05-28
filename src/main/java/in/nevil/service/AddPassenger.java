@@ -1,7 +1,5 @@
 package in.nevil.service;
 
-import java.util.List;
-
 import in.nevil.dao.PassengerDAO;
 import in.nevil.model.Passenger;
 import in.nevil.validator.FeildValidator;
@@ -16,10 +14,8 @@ public class AddPassenger {
 		throw new IllegalStateException("Utill class");
 	}
 	
-	@SuppressWarnings("unused")
-	private static PassengerDAO passengerDao= new PassengerDAO();
-	@SuppressWarnings("unused")
-	private static final List<Passenger> passengerList = PassengerDAO.getPassengerList();
+	
+
 	
 	
 	//validating the entered details and adding the passenger details

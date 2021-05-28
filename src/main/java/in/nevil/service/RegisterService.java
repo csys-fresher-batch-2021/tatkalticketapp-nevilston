@@ -46,7 +46,6 @@ public class RegisterService {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			throw new UserAlreadyRegisteredException("User Already Available");
 		}
 
