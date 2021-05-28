@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.nevil.dao.TrainDAO;
-import in.nevil.service.TrainService;
 
 /**
  * Servlet implementation class DeleteTrainServlet

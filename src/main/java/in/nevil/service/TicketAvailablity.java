@@ -35,7 +35,7 @@ public class TicketAvailablity {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
-			throw new TicketNotAvailableExceptions("Ticket Not Available");
+			
 		}
 		return isAvailable;
 	}
