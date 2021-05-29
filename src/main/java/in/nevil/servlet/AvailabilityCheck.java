@@ -16,20 +16,26 @@ import in.nevil.validator.DateValidator;
 @WebServlet("/AvailabilityCheck")
 public class AvailabilityCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userJourneyDate = request.getParameter("journeydate");
 		String userAvailableTickets = request.getParameter("ticketneeded");
 		int userNeededSeats = Integer.parseInt(userAvailableTickets);
+		try {
 		boolean isValidDate = DateValidator.journeyDateCheck(userJourneyDate);
 		boolean isTicketValidate = TicketAvailablity.checkTicketAvailability(userNeededSeats);
 		if (isValidDate && isTicketValidate) {
-			response.sendRedirect("trainListView.jsp");
+			String message ="Train Avialable";
+				response.sendRedirect("DateCheck.jsp?errorMessage=" + message);
 		} else {
 			String message = "Invalid Date or Try With Less Seats ";
 			response.sendRedirect("DateCheck.jsp?errorMessage=" + message);
 		}
+	
+	}catch(Exception e) {
+		e.getLocalizedMessage();
 	}
-
+		
+	}
 }

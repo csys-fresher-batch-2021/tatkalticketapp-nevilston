@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import in.nevil.validator.UserValidator;
+import in.nevil.validator.Validator;
 import in.nevil.validator.FeildValidator;
 
 public class ValidatorTestCase {
@@ -15,7 +15,7 @@ public class ValidatorTestCase {
 	@Test
 	public void isUserNumberFormatIsInValid() {
 		String userNumber ="67798767kab877";
-		boolean isValidUserNumber = UserValidator.userIdFormatValidation(userNumber);
+		boolean isValidUserNumber = Validator.userIdFormatValidation(userNumber);
 		assertFalse(isValidUserNumber);
 	}
 	/**
@@ -24,7 +24,7 @@ public class ValidatorTestCase {
 	@Test
 	public void isUserNumberFormatIsValid() {
 		String userNumber ="9566087158";
-		boolean isValidUserNumber = UserValidator.userIdFormatValidation(userNumber);
+		boolean isValidUserNumber = Validator.userIdFormatValidation(userNumber);
 		assertTrue(isValidUserNumber);
 	}
 	/**
@@ -83,7 +83,7 @@ public class ValidatorTestCase {
 	@Test
 	public void isValidPasswordFormatValidTest() { 
 		String password =  "@Password123";
-		boolean isValidPasswordLength = UserValidator.isValidPasswordFormat(password);
+		boolean isValidPasswordLength = Validator.isValidPasswordFormat(password);
 		assertTrue(isValidPasswordLength);
 	}
 

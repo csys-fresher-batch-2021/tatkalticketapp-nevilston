@@ -12,7 +12,7 @@
 
 
 		<h2>Welcome</h2>
-
+	
 		<h3>
 			<strong> Login</strong>
 		</h3>
@@ -41,8 +41,6 @@
 			<br>
 
 		</form>
-
-
 
 	</main>
 </body>

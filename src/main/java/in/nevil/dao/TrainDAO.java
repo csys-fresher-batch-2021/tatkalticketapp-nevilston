@@ -1,38 +1,85 @@
 package in.nevil.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
+import in.nevil.ConnectionSql.ConnectionUtil;
 import in.nevil.model.Train;
 
 public class TrainDAO {
-	private static final Map<String, Integer> classListPrice = new HashMap<>();
-	// Default adding the Class and Fare
-	static {
-		classListPrice.put("First Class", 760);
-		classListPrice.put("Sleeper", 295);
-		classListPrice.put("Second Sitting", 180);
+	 
+	//adding new details train details
+	public void addTrain(Train train) throws  SQLException, ClassNotFoundException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql = "INSERT INTO train_details (train_name,train_number,seats_avaialble) values(?,?,?)";
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, train.getTrainName());
+			pst.setString(2, train.getTrainNumber());
+			pst.setInt(3, train.getAvailableTickets());
+			pst.executeUpdate();
+		}  finally {
+			ConnectionUtil.close(pst, connection);
+		}
+		
+	}
+	
+	//getting and displaying train details 
+	public List<Train> getTrainDetails() throws SQLException, ClassNotFoundException {
+		List<Train> trainDetails = new ArrayList<>();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		Connection connection = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql = "SELECT * FROM train_details";
+			pst = connection.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				String trainNumber = rs.getString("train_number");
+				
+				String trainName = rs.getString("train_name");
+				
+				int seats = rs.getInt("seats_avaialble");
+				
+				Train train = new Train(trainName, trainNumber, seats);
+				trainDetails.add(train);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.getMessage();
+			
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		
+		return trainDetails;
 	}
 
-	private static final List<Train> trainList = new ArrayList<>();
-	static {
-		trainList.add(new Train("Madurai Express", "12345M", 120));
-		trainList.add(new Train("Pearl City Express", "234451T", 190));
-		trainList.add(new Train("Kacheguda Express", "457671C", 200));
+	// delete train from table
+	public boolean deleteTrainFromTable(String trainNumber)  {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		boolean isdeleted = false;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql ="DELETE FROM train_details WHERE train_number ='"+trainNumber+"'";
+			pst = connection.prepareStatement(sql);
+			pst.executeUpdate();
+			isdeleted = true;
+		} catch (ClassNotFoundException | SQLException e) {
+			
+			e.getMessage();
+		} finally {
+			ConnectionUtil.close(pst, connection);
+		
+		}
+	
+		return isdeleted;
+		
 	}
-
-	public void addTrain(Train train) {
-		trainList.add(new Train(train.getTrainName(), train.getTrainNumber(), train.getAvailableTickets()));
-	}
-
-	public static List<Train> getTrainList() {
-		return trainList;
-	}
-
-	public static Map<String, Integer> getClassList() {
-		return classListPrice;
-	}
-
 }

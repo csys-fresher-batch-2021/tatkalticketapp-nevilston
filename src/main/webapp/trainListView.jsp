@@ -31,11 +31,11 @@ String role = (String) session.getAttribute("ROLE");
 				</tr>
 			</thead>
 			<tbody>
-				<%
+				<% 
 				final TrainDAO trainDAO = new TrainDAO();
-				final List<Train> trainList = trainDAO.getTrainList();
-				int i = 0;
-				for (Train train : trainList) {
+				final List<Train> trainList = trainDAO.getTrainDetails();
+				int i =0;
+				for(Train train :trainList){
 					i++;
 				%>
 				<tr>
@@ -47,26 +47,23 @@ String role = (String) session.getAttribute("ROLE");
 					if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")) {
 					%>
 					<td><a href="DateCheck.jsp" class="btn btn-primary">Book</a> <%
- }
- %> <%
- if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")) {
- %>
+ 					}
+ 					%> <%
+						 if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")) {
+						 %>
 					<td><a
 						href="DeleteTrainServlet?TrainNumber=<%=train.getTrainNumber()%>"
 						class="btn btn-danger">Delete</a> <%
- }
- %>
+ 							}
+						 %>
 				</tr>
 				<%
 				}
 				%>
 			</tbody>
-			<!-- Added the Details of the Train In the Table -->
+
+			<tbody>
 		</table>
-
-
-
-
 	</main>
 </body>
 </html>
