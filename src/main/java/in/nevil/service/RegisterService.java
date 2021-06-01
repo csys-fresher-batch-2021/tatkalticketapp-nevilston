@@ -27,15 +27,26 @@ public class RegisterService {
 			throws UserAlreadyRegisteredException, ClassNotFoundException, SQLException {
 		UserDAO userDAO = new UserDAO();
 		List<User> userList = userDAO.getUserList();
+		boolean emptyUserList = userList.isEmpty();
+		System.out.println(emptyUserList);
+		System.out.println(userList);
 		Long userNumbercheck = userNumber;
 		boolean isUserRegister = false;
 		try {
 			boolean isUserIdValid = Validator.userIdValidation(userNumber);
+			System.out.println(isUserIdValid);
 			boolean isValidPasswordFormat = Validator.isValidPasswordFormat(userPassword);
-
+			System.out.println(isValidPasswordFormat);
+			if(emptyUserList) {
+				UserDAO.addUser(new User(userName, userNumber, userPassword));
+				isUserRegister = true;
+			}
+			else {
 			for (User user : userList) {
 				long registeredNumber = user.getUserNumber();
-				if (userNumbercheck == (registeredNumber)) {
+				System.out.println(registeredNumber);
+				if (userNumbercheck == registeredNumber) {
+					System.out.println("Hi");
 					isUserRegister =false;
 				} else {
 					if (isUserIdValid && isValidPasswordFormat) {
@@ -45,11 +56,14 @@ public class RegisterService {
 					}
 				}
 			}
-		} catch (Exception e) {
+		}
+		}catch (Exception e) {
 			throw new UserAlreadyRegisteredException("User Already Available");
 		}
 
 		System.out.println(isUserRegister);
 		return isUserRegister;
-	}
+	
+	
+}
 }

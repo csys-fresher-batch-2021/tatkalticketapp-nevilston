@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.nevil.ConnectionSql.ConnectionUtil;
+import in.nevil.util.ConnectionUtil;
+import in.nevil.model.RegisteredDetailsDAO;
 import in.nevil.model.User;
 
 public class UserDAO {
@@ -51,5 +52,30 @@ public class UserDAO {
 			ConnectionUtil.close(rs, pst, connection);
 		}
 		return userDetails;
+	}
+	public List<RegisteredDetailsDAO> getregisterList(){
+		List<RegisteredDetailsDAO> registerList = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql = "SELECT * FROM user_details";
+			pst = connection.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				String userName = rs.getString("user_name");
+				long userMobileNumber = rs.getLong("user_mobilenumber");
+				String userPassword = rs.getString("user_password");
+				int userId = rs.getInt("user_id");
+				RegisteredDetailsDAO registeredDAO = new RegisteredDetailsDAO(userId,userName,userPassword,userMobileNumber);
+				registerList.add(registeredDAO);
+			}
+	}catch (ClassNotFoundException | SQLException e) {
+		e.getMessage();
+	}finally {
+		ConnectionUtil.close(rs, pst, connection);
+	}
+		return registerList;
 	}
 }

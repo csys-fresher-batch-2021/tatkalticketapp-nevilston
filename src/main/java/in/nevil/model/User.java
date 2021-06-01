@@ -4,13 +4,15 @@ public class User {
 	private String userName;
 	private long userNumber;
 	private String userPassword;
-
+	
 	public User(String userName, long userNumber, String userPassword) {
 		super();
 		this.userName = userName;
 		this.userNumber = userNumber;
 		this.userPassword = userPassword;
 	}
+
+	
 
 	public String getUserName() {
 		return userName;
@@ -36,9 +38,5 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userName=" + userName + ", userNumber=" + userNumber + ", userPassword=" + userPassword + "]";
-	}
-
+	
 }

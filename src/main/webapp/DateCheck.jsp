@@ -1,5 +1,7 @@
+<%@page import="in.nevil.model.Train"%>
+<%@page import="java.util.List"%>
 <%@page import="in.nevil.dao.TrainDAO"%>
-<%@page import="java.util.Map"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -14,21 +16,18 @@
 		<h3>BOOKING</h3>
 		<form action="AvailabilityCheck" method="get">
 			<%
-				String trainName = request.getParameter("TrainNumber");
+				String trainName = request.getParameter("trainName");
 			%>
 			<h4>
-				The Train Selected is
-				<%=trainName%></h4>
+				The Train Selected is <%=trainName%></h4>
 			<br /> <label for="dateCheck"> Journey Date</label>
 			<p>
 				<input type="date" name="journeydate"
 					placeholder="Enter journey Date " required autofocus></input><br>
 			</p>
-			<label for="dateCheck">Number of Ticket </label>
-			<p>
-				<input type="number" name="ticketneeded"
-					placeholder="Enter Ticket Needed" required autofocus></input><br>
-			<p>
+					<label for="ticket">Select Number Of tickets :</label>
+				<input type="checkbox" name="ticketnedded" value="1"/> 1
+				<input type="checkbox" name="ticketnedded"value="2"/> 2<br>
 				<%
 					final String errorMessage = request.getParameter("errorMessage");
 				if (errorMessage != null) {
@@ -36,32 +35,8 @@
 				}
 				%>
 				<br />
-				<button class="btn btn-primary">Check</button>
-				<br />
-				<h3>Types Of Class Available</h3>
-			<table class="table table-bordered" aria-describedby="mydesc">
-				<thead>
-					<tr>
-						<th scope="col">CLASS</th>
-						<th scope="col">FARE</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-					final TrainDAO trainDAO = new TrainDAO();
-					Map<String, Integer> trainClassList = TrainDAO.getClassList();
-					for (String trainClassType : trainClassList.keySet()) {
-					%>
-					<tr>
-						<td><%=trainClassType%></td>
-						<td><%=trainClassList.get(trainClassType)%></td>
-						<td><a href="getPassangerInfromation.jsp?ClassType=<%=trainClassType%>" class="btn btn-primary">Book</a> 
-						<%
-						}
-						%>
-					</tr>
-				</tbody>
-			</table>	
+				<button class="btn btn-primary">Check</button><br/>
+				
 				
 		</form>
 			
