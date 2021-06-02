@@ -1,4 +1,4 @@
-package in.nevil.ConnectionSql;
+package in.nevil.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

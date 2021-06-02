@@ -16,7 +16,7 @@ public class TrainServicesValidationTest {
 	public void displayTrainNamesTest() throws ClassNotFoundException, SQLException {
 		TrainDAO trainDAO = new TrainDAO();
 		List<Train>trainNames=trainDAO.getTrainDetails();
-		assertEquals(4,trainNames.size());
+		assertEquals(3,trainNames.size());
 	}
 	@Test
 	public void displayTrainNames2Test() throws ClassNotFoundException, SQLException {

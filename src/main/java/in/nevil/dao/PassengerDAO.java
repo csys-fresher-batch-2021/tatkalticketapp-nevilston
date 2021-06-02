@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.nevil.ConnectionSql.ConnectionUtil;
+import in.nevil.util.ConnectionUtil;
 import in.nevil.model.Passenger;
 
 public class PassengerDAO {
