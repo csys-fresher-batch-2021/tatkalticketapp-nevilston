@@ -14,7 +14,7 @@
 		<h3>BOOKING</h3>
 		<form action="AvailabilityCheck" method="get">
 			<%
-				String trainName = request.getParameter("TrainNumber");
+				String trainName = request.getParameter("trainName");
 			%>
 			<h4>
 				The Train Selected is
@@ -25,9 +25,9 @@
 					placeholder="Enter journey Date " required autofocus></input><br>
 			</p>
 			<label for="dateCheck">Number of Ticket </label>
-			<p>
-				<input type="number" name="ticketneeded"
-					placeholder="Enter Ticket Needed" required autofocus></input><br>
+				<input TYPE="radio" name="ticketneeded" value="1" />1
+				<Input TYPE="radio" name="ticketneeded" value="2" />2<br> <br /> 
+				
 			<p>
 				<%
 					final String errorMessage = request.getParameter("errorMessage");
@@ -37,31 +37,8 @@
 				%>
 				<br />
 				<button class="btn btn-primary">Check</button>
-				<br />
-				<h3>Types Of Class Available</h3>
-			<table class="table table-bordered" aria-describedby="mydesc">
-				<thead>
-					<tr>
-						<th scope="col">CLASS</th>
-						<th scope="col">FARE</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-					final TrainDAO trainDAO = new TrainDAO();
-					Map<String, Integer> trainClassList = TrainDAO.getClassList();
-					for (String trainClassType : trainClassList.keySet()) {
-					%>
-					<tr>
-						<td><%=trainClassType%></td>
-						<td><%=trainClassList.get(trainClassType)%></td>
-						<td><a href="getPassangerInfromation.jsp?ClassType=<%=trainClassType%>" class="btn btn-primary">Book</a> 
-						<%
-						}
-						%>
-					</tr>
-				</tbody>
-			</table>	
+				<br/>
+			
 				
 		</form>
 			

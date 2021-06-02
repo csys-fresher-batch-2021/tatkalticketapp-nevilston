@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import in.nevil.dao.UserDAO;
 import in.nevil.service.UserService;
 
 
@@ -20,7 +21,11 @@ public class LoginServlet extends HttpServlet {
 		try { 
 			String loginType = request.getParameter("command");
 			String stringAdminNumber =request.getParameter("adminUsernumber");
+			long userNumber = Long.parseLong(stringAdminNumber);
+			UserDAO userDAO = new UserDAO();
+				int userId= userDAO.getUserId(userNumber);
 				long adminUserNumber =Long.parseLong(stringAdminNumber);
+				System.out.println(adminUserNumber);
 				String adminPassword = request.getParameter("adminPassword");
 				boolean isValidAdmin = UserService.adminValidation(adminUserNumber, adminPassword);
 				boolean isValidUser = UserService.userValidation(adminUserNumber, adminPassword);
@@ -35,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 					HttpSession session = request.getSession();
 					session.setAttribute("LOGGED_IN_USER", loginType);
 					session.setAttribute("ROLE", "USER");
+					session.setAttribute("USER_ID", userId);
 					response.sendRedirect("trainListView.jsp");
 				
 			}
@@ -43,8 +49,7 @@ public class LoginServlet extends HttpServlet {
 					response.sendRedirect("login.jsp?errorMessage=" + message);
 				}
 		}catch(Exception e){
-			String error = "Enter Valid Number Format ";
-			response.sendRedirect("login.jsp?error=" + error);
+			e.printStackTrace();
 		}
 		
 		

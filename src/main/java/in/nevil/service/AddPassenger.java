@@ -1,5 +1,7 @@
 package in.nevil.service;
 
+import java.sql.SQLException;
+
 import in.nevil.dao.PassengerDAO;
 import in.nevil.model.Passenger;
 import in.nevil.validator.FeildValidator;
@@ -14,18 +16,18 @@ public class AddPassenger {
 		throw new IllegalStateException("Utill class");
 	}
 	
-	
+	private static PassengerDAO passengerDAO = new PassengerDAO();
 
 	
 	
 	//validating the entered details and adding the passenger details
-	public static boolean addPassenger(String passengerName, int passengerAge, String passengerGender) {
-		// call validation and check productName
+	public static boolean addPassenger(int id,String passengerName, int passengerAge, String passengerGender) throws ClassNotFoundException, SQLException {
+		// call validation and check
 		boolean isValidPassenger = false;
 		boolean isUserIdValid = FeildValidator.isPassangerAgeEmptyAndNotNull(passengerAge);
 		boolean isValidPasswordFormat = Validator.isValidPassengerName(passengerName);
 			if (isUserIdValid && isValidPasswordFormat) {
-				PassengerDAO.addPassenger(new Passenger(passengerName, passengerAge, passengerGender));
+				passengerDAO.addPassenger(new Passenger(id,passengerName, passengerAge, passengerGender));
 				isValidPassenger = true;
 			}
 		return isValidPassenger;
