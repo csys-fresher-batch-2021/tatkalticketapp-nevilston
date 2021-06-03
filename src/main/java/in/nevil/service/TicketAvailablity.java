@@ -39,5 +39,5 @@ public class TicketAvailablity {
 		}
 		return isAvailable;
 	}
-	
+
 }
