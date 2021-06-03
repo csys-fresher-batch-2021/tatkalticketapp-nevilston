@@ -34,7 +34,7 @@ public class RegisterService {
 		boolean isUserRegister = false;
 		try {
 			boolean isUserIdValid = Validator.userIdValidation(userNumber);
-			System.out.println(isUserIdValid);
+
 			boolean isValidPasswordFormat = Validator.isValidPasswordFormat(userPassword);
 			System.out.println(isValidPasswordFormat);
 			if(emptyUserList) {
@@ -50,8 +50,8 @@ public class RegisterService {
 					isUserRegister =false;
 				} else {
 					if (isUserIdValid && isValidPasswordFormat) {
-						UserDAO.addUser(new User(userName, userNumber, userPassword));
-						System.out.println("hi");
+						UserDAO.addUser(new User(0, userName, userNumber, userPassword));
+					
 						isUserRegister = true;
 					}
 				}
@@ -61,7 +61,7 @@ public class RegisterService {
 			throw new UserAlreadyRegisteredException("User Already Available");
 		}
 
-		System.out.println(isUserRegister);
+		
 		return isUserRegister;
 	
 	

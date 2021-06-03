@@ -1,6 +1,7 @@
 package in.nevil.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,19 +27,19 @@ public class AvailabilityCheck extends HttpServlet {
 		try {
 		boolean isValilTicket = TicketAvailablity.checkTicketAvailability(numberOfTicket);
 		boolean isValidDate = DateValidator.journeyDateCheck(userJourneyDate);
-//		float fareCalculation = TicketAvailablity  
-		if (isValidDate && isValilTicket && numberOfTicket == 1 ) {
-				String message = "Train Available";
-				response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
-				HttpSession session = request.getSession();
-				session.setAttribute("USER_TICKET", tickets);
-				
-		} else if(isValidDate && isValilTicket ) {
-			String message ="Train Avialable";
-			response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
+		boolean isTicketValidate = TicketAvailablity.checkTicketAvailability(userNeededSeats);
+		if (userAvailableTickets.equalsIgnoreCase("1") && isValidDate && isTicketValidate) {
 			HttpSession session = request.getSession();
-			session.setAttribute("USER_TICKET", "2");
-		}else {
+			session.setAttribute("TICKETS", userAvailableTickets);
+			response.sendRedirect("getPassangerInfromation.jsp");
+		}
+		else if(userAvailableTickets.equalsIgnoreCase("2")&& isValidDate && isTicketValidate){
+			HttpSession session = request.getSession();
+			session.setAttribute("TICKETS", "2");
+			response.sendRedirect("getPassangerInfromation.jsp");
+			
+    }
+else {
 			String message = "Invalid Date ";
 			response.sendRedirect("DateCheck.jsp?errorMessage=" + message);
 		}

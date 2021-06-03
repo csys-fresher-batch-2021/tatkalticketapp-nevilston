@@ -39,7 +39,5 @@ public class TicketAvailablity {
 		}
 		return isAvailable;
 	}
-	public static void fareCalculation(int numberOfTicket) {
-		
-	}
+
 }

@@ -55,9 +55,11 @@ public class UserService {
 		boolean isValidPasswordFormat = Validator.isValidPasswordFormat(userPassword);
 		if (isUserIdValid && isValidPasswordFormat && userCredentialHashTable.containsKey(userNumber)
 				&& userPassword.equals(userCredentialHashTable.get(userNumber))) {
+				
 			isValidUser = true;
 		}
 		return isValidUser;
 	}
-
+	
+	
 }

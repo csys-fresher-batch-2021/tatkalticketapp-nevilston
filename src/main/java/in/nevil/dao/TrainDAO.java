@@ -71,6 +71,7 @@ public class TrainDAO {
 		try {
 			connection = ConnectionUtil.getConnection();
 			String sql ="DELETE FROM train_details WHERE train_number ='"+trainNumber+"'";
+			
 			pst = connection.prepareStatement(sql);
 			pst.executeUpdate();
 			isdeleted = true;

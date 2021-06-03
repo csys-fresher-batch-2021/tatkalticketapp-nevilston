@@ -14,9 +14,10 @@ public class AddPassengerServiceTest {
 	@Test
 	public void addPassengerTest() throws ClassNotFoundException, SQLException {
 		String passengerName = "Chota Bheem";
+		int passngerId =1;
 		int passengerAge = 23;
 		String passengerGender = "Male";
-		boolean isValidPassenger = AddPassenger.addPassenger(passengerName, passengerAge, passengerGender);
+		boolean isValidPassenger = AddPassenger.addPassenger(passngerId,passengerName, passengerAge, passengerGender);
 		assertTrue(isValidPassenger);
 	}
 
@@ -26,7 +27,7 @@ public class AddPassengerServiceTest {
 		String passengerName = null;
 		int passengerAge = 0;
 		String passengerGender = null;
-		boolean isValidPassenger = AddPassenger.addPassenger(passengerName, passengerAge, passengerGender);
+		boolean isValidPassenger = AddPassenger.addPassenger(passengerAge,passengerName, passengerAge, passengerGender);
 		assertFalse(isValidPassenger);
  }
 }

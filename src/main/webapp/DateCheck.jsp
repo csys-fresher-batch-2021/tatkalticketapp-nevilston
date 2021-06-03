@@ -25,9 +25,12 @@
 				<input type="date" name="journeydate"
 					placeholder="Enter journey Date " required autofocus></input><br>
 			</p>
-					<label for="ticket">Select Number Of tickets :</label>
-				<input type="checkbox" name="ticketnedded" value="1"/> 1
-				<input type="checkbox" name="ticketnedded"value="2"/> 2<br>
+
+			<label for="dateCheck">Number of Ticket </label>
+				<input TYPE="radio" name="ticketneeded" value="1" />1
+				<Input TYPE="radio" name="ticketneeded" value="2" />2<br> <br /> 
+				
+	
 				<%
 					final String errorMessage = request.getParameter("errorMessage");
 				if (errorMessage != null) {
@@ -35,8 +38,10 @@
 				}
 				%>
 				<br />
+
+
 				<button class="btn btn-primary">Check</button><br/>
-				
+
 				
 		</form>
 			
