@@ -21,17 +21,23 @@ public class AddPassenger {
 	
 	
 	//validating the entered details and adding the passenger details
+
 	public static boolean addPassenger(int id,String passengerName, int passengerAge, String passengerGender) throws ClassNotFoundException, SQLException {
 		// call validation and check
+
 		boolean isValidPassenger = false;
 		boolean isUserIdValid = FeildValidator.isPassangerAgeEmptyAndNotNull(passengerAge);
 		boolean isValidPasswordFormat = Validator.isValidPassengerName(passengerName);
 			if (isUserIdValid && isValidPasswordFormat) {
+
 				passengerDAO.addPassenger(new Passenger(id,passengerName, passengerAge, passengerGender));
+
 				isValidPassenger = true;
 			}
 		return isValidPassenger;
 	}
+	
+
 	
 	
 }

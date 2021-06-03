@@ -5,12 +5,14 @@ public class User {
 	private String userName;
 	private long userNumber;
 	private String userPassword;
+
 	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
 	public String getUserName() {
 		return userName;
 	}
@@ -29,6 +31,7 @@ public class User {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
+
 	public User(int userId, String userName, long userNumber, String userPassword) {
 		super();
 		this.userId = userId;
@@ -38,5 +41,6 @@ public class User {
 	}
 
 	
+
 
 }

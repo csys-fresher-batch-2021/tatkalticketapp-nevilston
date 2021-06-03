@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 <%
 String ticketsNeeded = (String)session.getAttribute("TICKETS");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -10,6 +12,7 @@ String ticketsNeeded = (String)session.getAttribute("TICKETS");
 <title>Passenger Information</title>
 </head>
 <body>
+
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 	<h3>Enter Passenger Details</h3>
@@ -50,4 +53,5 @@ String ticketsNeeded = (String)session.getAttribute("TICKETS");
 	</main>
 	
 </body>
+
 </html>

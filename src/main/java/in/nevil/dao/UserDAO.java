@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import in.nevil.util.ConnectionUtil;
+
 import in.nevil.model.User;
 
 public class UserDAO {
@@ -52,9 +54,11 @@ public class UserDAO {
 		}
 		return userDetails;
 	}
+
 	
 	public int getUserId(long userNumber) throws SQLException {
 		int userId= 0;
+
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -77,4 +81,4 @@ public class UserDAO {
 		
 	}
 	
-}
+

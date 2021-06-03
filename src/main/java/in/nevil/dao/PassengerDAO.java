@@ -11,11 +11,13 @@ import in.nevil.util.ConnectionUtil;
 import in.nevil.model.Passenger;
 
 public class PassengerDAO {
-	public void addPassenger(Passenger passenger) throws  SQLException, ClassNotFoundException {
+
+	public void addPassenger(Passenger passenger) throws  SQLException, ClassNotFoundException 
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
 			connection = ConnectionUtil.getConnection();
+
 			String sql = "INSERT INTO passenger_details (passenger_id,passenger_name,passenger_age,passenger_gender) values(?,?,?,?)";
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, passenger.getPassengerBookingId());
@@ -45,7 +47,7 @@ public class PassengerDAO {
 				String passengerGender = rs.getString("passenger_gender");
 				
 				int passengerAge = rs.getInt("passenger_age");
-				
+        
 				Passenger passenger = new Passenger(passangerBooKid,passengerName, passengerAge,passengerGender);
 				getPassengerList.add(passenger);
 			}
@@ -55,7 +57,5 @@ public class PassengerDAO {
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}
-		
 		return getPassengerList;
-	}
-}
+} 

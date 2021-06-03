@@ -22,15 +22,15 @@ public class AvailabilityCheck extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userJourneyDate = request.getParameter("journeydate");
-		String userAvailableTickets = request.getParameter("ticketneeded");
-		int userNeededSeats = Integer.parseInt(userAvailableTickets);
+		int numberOfTicket = Integer.parseInt(request.getParameter("ticketnedded"));
+		String tickets = request.getParameter("ticketnedded");
 		try {
+		boolean isValilTicket = TicketAvailablity.checkTicketAvailability(numberOfTicket);
 		boolean isValidDate = DateValidator.journeyDateCheck(userJourneyDate);
 		boolean isTicketValidate = TicketAvailablity.checkTicketAvailability(userNeededSeats);
 		if (userAvailableTickets.equalsIgnoreCase("1") && isValidDate && isTicketValidate) {
 			HttpSession session = request.getSession();
 			session.setAttribute("TICKETS", userAvailableTickets);
-			
 			response.sendRedirect("getPassangerInfromation.jsp");
 		}
 		else if(userAvailableTickets.equalsIgnoreCase("2")&& isValidDate && isTicketValidate){
@@ -38,8 +38,9 @@ public class AvailabilityCheck extends HttpServlet {
 			session.setAttribute("TICKETS", "2");
 			response.sendRedirect("getPassangerInfromation.jsp");
 			
-		} else {
-			String message = "Invalid Date or Try With Less Seats ";
+    }
+else {
+			String message = "Invalid Date ";
 			response.sendRedirect("DateCheck.jsp?errorMessage=" + message);
 		}
 	

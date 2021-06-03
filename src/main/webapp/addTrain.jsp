@@ -16,6 +16,9 @@
 				autofocus /> <label for="ticketAvailable">Seat Available</label> <input
 				type="number" name="seatAvailable"
 				placeholder="Enter Ticket Available" required autofocus /> <br />
+				<label for="trainfare">Train Fare</label> <input
+				type="number" name="trainFare"
+				placeholder="Enter Train Fare " required autofocus /> <br />
 			<button type="submit">Submit</button>
 		</form>
 	</main>

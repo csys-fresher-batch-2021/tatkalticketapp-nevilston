@@ -17,11 +17,12 @@ public class TrainDAO {
 		PreparedStatement pst = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "INSERT INTO train_details (train_name,train_number,seats_avaialble) values(?,?,?)";
+			String sql = "INSERT INTO train_details (train_name,train_number,seats_avaialble,train_fare) values(?,?,?,?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, train.getTrainName());
 			pst.setString(2, train.getTrainNumber());
 			pst.setInt(3, train.getAvailableTickets());
+			pst.setInt(4,train.getTrainFare());
 			pst.executeUpdate();
 		}  finally {
 			ConnectionUtil.close(pst, connection);
@@ -47,7 +48,9 @@ public class TrainDAO {
 				
 				int seats = rs.getInt("seats_avaialble");
 				
-				Train train = new Train(trainName, trainNumber, seats);
+				int fare = rs.getInt("train_fare");
+				
+				Train train = new Train(trainName, trainNumber, seats,fare);
 				trainDetails.add(train);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
@@ -83,4 +86,5 @@ public class TrainDAO {
 		return isdeleted;
 		
 	}
+	
 }
