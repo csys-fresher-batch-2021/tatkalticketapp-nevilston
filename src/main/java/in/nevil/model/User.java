@@ -1,3 +1,4 @@
+
 package in.nevil.model;
 
 public class User {
@@ -47,3 +48,4 @@ public class User {
 	}
 
 }
+

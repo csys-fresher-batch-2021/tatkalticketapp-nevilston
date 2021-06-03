@@ -1,3 +1,5 @@
+
+
 package in.nevil.dao;
 
 import java.sql.Connection;
@@ -12,8 +14,7 @@ import in.nevil.model.Passenger;
 
 public class PassengerDAO {
 
-	public void addPassenger(Passenger passenger) throws  SQLException, ClassNotFoundException {
-
+	public void addPassenger(Passenger passenger) throws  SQLException, ClassNotFoundException 
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -40,7 +41,6 @@ public class PassengerDAO {
 			String sql = "SELECT * FROM passenger_details";
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
-
 			while (rs.next()) {
 				int passangerBooKid = rs.getInt("passenger_id");
 				
@@ -49,7 +49,7 @@ public class PassengerDAO {
 				String passengerGender = rs.getString("passenger_gender");
 				
 				int passengerAge = rs.getInt("passenger_age");
-				
+        
 				Passenger passenger = new Passenger(passangerBooKid,passengerName, passengerAge,passengerGender);
 				getPassengerList.add(passenger);
 			}
@@ -59,8 +59,6 @@ public class PassengerDAO {
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}
-		
 		return getPassengerList;
 
-	}
 } 
