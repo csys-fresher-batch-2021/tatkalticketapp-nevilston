@@ -1,3 +1,4 @@
+
 <%@page import="in.nevil.dao.TrainDAO"%>
 <%@page import="in.nevil.model.Train"%>
 <%@page import="in.nevil.service.TrainService"%>
@@ -47,25 +48,22 @@ String role = (String) session.getAttribute("ROLE");
 					if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")) {
 					%>
 
-					<td><a href="DateCheck.jsp?trainName=<%=train.getTrainName() %>" class="btn btn-primary">Book</a> <%
-
- 					}
- 					%> <%
+					<td><a href="DateCheck.jsp?trainName=<%=train.getTrainName() %>" class="btn btn-primary">Book</a> 
+					<% } %> 
+ 					
+ 					<%
 						 if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 						 %>
 					<td><a
 						href="DeleteTrainServlet?TrainNumber=<%=train.getTrainNumber()%>"
-						class="btn btn-danger">Delete</a> <%
- 							}
-						 %>
+						class="btn btn-danger">Delete</a>
+						 <%} %>
 				</tr>
-				<%
-				}
-				%>
-			</tbody>
+				<%} %>
 
 			<tbody>
 		</table>
 	</main>
 </body>
 </html>
+

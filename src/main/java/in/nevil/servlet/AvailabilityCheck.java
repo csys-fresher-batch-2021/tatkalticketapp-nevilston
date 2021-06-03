@@ -1,3 +1,4 @@
+
 package in.nevil.servlet;
 
 import java.io.IOException;
@@ -22,24 +23,26 @@ public class AvailabilityCheck extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userJourneyDate = request.getParameter("journeydate");
-		int numberOfTicket = Integer.parseInt(request.getParameter("ticketnedded"));
-		String tickets = request.getParameter("ticketnedded");
-		try {
+		int numberOfTicket = Integer.parseInt(request.getParameter("ticketneeded"));
+		System.out.println(numberOfTicket);
+				try {
 		boolean isValilTicket = TicketAvailablity.checkTicketAvailability(numberOfTicket);
 		boolean isValidDate = DateValidator.journeyDateCheck(userJourneyDate);
-		boolean isTicketValidate = TicketAvailablity.checkTicketAvailability(userNeededSeats);
-		if (userAvailableTickets.equalsIgnoreCase("1") && isValidDate && isTicketValidate) {
+
+		
+	
+		if (isValidDate && isValilTicket && numberOfTicket == 1 ) {
+				String message = "Train Available";
+				response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
+				HttpSession session = request.getSession();
+				session.setAttribute("USER_TICKET", "1");
+				
+		} else if(isValidDate && isValilTicket ) {
+			String message ="Train Avialable";
+			response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
 			HttpSession session = request.getSession();
-			session.setAttribute("TICKETS", userAvailableTickets);
-			response.sendRedirect("getPassangerInfromation.jsp");
-		}
-		else if(userAvailableTickets.equalsIgnoreCase("2")&& isValidDate && isTicketValidate){
-			HttpSession session = request.getSession();
-			session.setAttribute("TICKETS", "2");
-			response.sendRedirect("getPassangerInfromation.jsp");
-			
-    }
-else {
+			session.setAttribute("USER_TICKET", "2");
+		}else {
 			String message = "Invalid Date ";
 			response.sendRedirect("DateCheck.jsp?errorMessage=" + message);
 		}

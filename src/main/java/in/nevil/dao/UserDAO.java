@@ -1,3 +1,4 @@
+
 package in.nevil.dao;
 
 import java.sql.Connection;
@@ -6,9 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import in.nevil.util.ConnectionUtil;
-
 import in.nevil.model.User;
 
 public class UserDAO {
@@ -44,7 +43,7 @@ public class UserDAO {
 				String userName = rs.getString("user_name");
 				long userMobileNumber = rs.getLong("user_mobilenumber");
 				String userPassword = rs.getString("user_password");
-				User user = new User(userId,userName, userMobileNumber, userPassword);
+				User user = new User(userId, userName, userMobileNumber, userPassword);
 				userDetails.add(user);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
@@ -55,10 +54,8 @@ public class UserDAO {
 		return userDetails;
 	}
 
-	
 	public int getUserId(long userNumber) throws SQLException {
-		int userId= 0;
-
+		int userId = 0;
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -68,17 +65,17 @@ public class UserDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setLong(1, userNumber);
 			rs = pst.executeQuery();
-			while(rs.next()) {
-			 userId = rs.getInt("user_id");
+			while (rs.next()) {
+				userId = rs.getInt("user_id");
 			}
-			} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}
 		return userId;
-		
-		
+
 	}
-	
+
+}
 

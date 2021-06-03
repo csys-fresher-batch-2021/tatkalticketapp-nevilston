@@ -1,3 +1,4 @@
+
 package in.nevil.servlet;
 
 import java.io.IOException;
@@ -20,10 +21,9 @@ public class AddPassengerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String ticketsNeeded = (String) session.getAttribute("TICKETS");
+		String ticketsNeeded = (String) session.getAttribute("USER_TICKET");
 		int tickets = Integer.parseInt(ticketsNeeded);
 		int id = (int) session.getAttribute("USER_ID");
-		System.out.println(id);
 		String passengerName = request.getParameter("passengername");
 		String passengerGender = request.getParameter("gender");
 		String age = request.getParameter("passengerAge");
@@ -52,3 +52,4 @@ public class AddPassengerServlet extends HttpServlet {
 		}
 	}
 }
+

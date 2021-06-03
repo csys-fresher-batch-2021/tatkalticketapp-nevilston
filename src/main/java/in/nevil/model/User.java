@@ -1,3 +1,4 @@
+
 package in.nevil.model;
 
 public class User {
@@ -9,6 +10,7 @@ public class User {
 	public int getUserId() {
 		return userId;
 	}
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
@@ -16,18 +18,23 @@ public class User {
 	public String getUserName() {
 		return userName;
 	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	public long getUserNumber() {
 		return userNumber;
 	}
+
 	public void setUserNumber(long userNumber) {
 		this.userNumber = userNumber;
 	}
+
 	public String getUserPassword() {
 		return userPassword;
 	}
+
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
@@ -40,7 +47,5 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
-	
-
-
 }
+

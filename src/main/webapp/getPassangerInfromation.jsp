@@ -1,9 +1,9 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<%
-String ticketsNeeded = (String)session.getAttribute("TICKETS");
-
+<% 
+String ticketneeded = (String) session.getAttribute("USER_TICKET");
 %>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,10 @@ String ticketsNeeded = (String)session.getAttribute("TICKETS");
 	<main class="container-fluid">
 	<h3>Enter Passenger Details</h3>
 	<form action="AddPassengerServlet" method="get">
-     <% if (ticketsNeeded.equalsIgnoreCase("1") && ticketsNeeded != null){ %>
+	
+     <% 
+     if (ticketneeded.equalsIgnoreCase("1") && ticketneeded != null){ 
+     %>
 	<label for="passengerName">Passenger Name</label> 
 	<input type="text"name="passengername" placeholder="Enter Name" required autofocus /><br/> 
 	<label for="passengerAge">Passenger Age</label>
@@ -28,7 +31,7 @@ String ticketsNeeded = (String)session.getAttribute("TICKETS");
 	<%} %>
 	
 	
-	 <% if (ticketsNeeded.equalsIgnoreCase("2") && ticketsNeeded != null){ %>
+	 <% if (ticketneeded.equalsIgnoreCase("2") && ticketneeded != null){ %>
 	 <p>Enter First Passenger Details</p>
 	<label for="passengerName">Passenger Name</label> 
 	<input type="text"name="passengername" placeholder="Enter Name" required autofocus /><br/> 
@@ -53,5 +56,6 @@ String ticketsNeeded = (String)session.getAttribute("TICKETS");
 	</main>
 	
 </body>
+
 
 </html>

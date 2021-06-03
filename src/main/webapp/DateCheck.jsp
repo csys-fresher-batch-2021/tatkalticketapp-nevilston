@@ -1,3 +1,4 @@
+
 <%@page import="in.nevil.model.Train"%>
 <%@page import="java.util.List"%>
 <%@page import="in.nevil.dao.TrainDAO"%>
@@ -30,7 +31,7 @@
 				<input TYPE="radio" name="ticketneeded" value="1" />1
 				<Input TYPE="radio" name="ticketneeded" value="2" />2<br> <br /> 
 				
-	
+
 				<%
 					final String errorMessage = request.getParameter("errorMessage");
 				if (errorMessage != null) {
@@ -39,8 +40,9 @@
 				%>
 				<br />
 
-
-				<button class="btn btn-primary">Check</button><br/>
+				<button class="btn btn-primary">Check</button>
+				<br/>
+			
 
 				
 		</form>
