@@ -20,7 +20,7 @@ public class AddPassenger {
 	}
 	
 	private static PassengerDAO passengerDAO = new PassengerDAO();
-	final static  List<Passenger> temPassengerList = new ArrayList<>();
+	 static  List<Passenger> temPassengerList = new ArrayList<>();
 	
 	
 	//validating the entered details and adding the passenger details

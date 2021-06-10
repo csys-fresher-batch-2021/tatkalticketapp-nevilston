@@ -32,8 +32,8 @@ public class BookingDAO {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
-	final static List<FinalBookingDetail> bookedDetails = new ArrayList<>();
-	public static void getBookedDetails(int user_id,int pnrNumber){
+	static  List<FinalBookingDetail> bookedDetails = new ArrayList<>();
+	public static void getBookedDetails(int userid,int pnrNumber){
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -41,7 +41,7 @@ public class BookingDAO {
 			connection = ConnectionUtil.getConnection();
 			String sql = "SELECT * FROM Booking_details FULL OUTER JOIN passenger_details  ON  Booking_details=Passenger_details WHERE passenger_id=? & pnr_number=?";
 			pst = connection.prepareStatement(sql);
-			pst.setInt(1, user_id);
+			pst.setInt(1, userid);
 			pst.setInt(2,pnrNumber);
 			rs = pst.executeQuery();
 		while (rs.next()) {
@@ -69,7 +69,7 @@ public class BookingDAO {
 		}
 	}
 	public  List<FinalBookingDetail> getFinalList(){
-		System.out.println(bookedDetails);
+	
 		return bookedDetails;
 	}
 }
