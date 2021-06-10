@@ -45,10 +45,11 @@ String role = (String) session.getAttribute("ROLE");
 					<td><%=train.getTrainName()%></td>
 					<td><%=train.getAvailableTickets()%></td>
 					<%
-					if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")) {
+					if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER") && train.getAvailableTickets()!=0) {
 					%>
 
-					<td><a href="DateCheck.jsp?trainName=<%=train.getTrainName() %>" class="btn btn-primary">Book</a> 
+					<td><a href="DateCheck.jsp?trainName=<%=train.getTrainName()%>&trainNumber=<%=train.getTrainNumber() %>" class="btn btn-primary">Book</a>
+					
 					<% } %> 
  					
  					<%
