@@ -20,41 +20,39 @@ import in.nevil.validator.DateValidator;
 @WebServlet("/AvailabilityCheck")
 public class AvailabilityCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String userJourneyDate = request.getParameter("journeydate");
-		LocalDate journeyDate =LocalDate.parse(userJourneyDate);
+		LocalDate journeyDate = LocalDate.parse(userJourneyDate);
 		session.setAttribute("DATE", journeyDate);
-		int numberOfTicket = Integer.parseInt(request.getParameter("ticketneeded"));
-		
-		
-				try {
-		boolean isValilTicket = TicketAvailablity.checkTicketAvailability(numberOfTicket);
-		boolean isValidDate = DateValidator.journeyDateCheck(userJourneyDate);
 
-		
-	
-		if (isValidDate && isValilTicket && numberOfTicket == 1 ) {
+		try {
+			int numberOfTicket = Integer.parseInt(request.getParameter("ticketneeded"));
+			boolean isValilTicket = TicketAvailablity.checkTicketAvailability(numberOfTicket);
+			boolean isValidDate = DateValidator.journeyDateCheck(userJourneyDate);
+
+			if (isValidDate && isValilTicket && numberOfTicket == 1) {
 				String message = "Train Available";
 				response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
-				
+
 				session.setAttribute("USER_TICKET", "1");
-				
-		} else if(isValidDate && isValilTicket ) {
-			String message ="Train Avialable";
-			response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
-			
-			session.setAttribute("USER_TICKET", "2");
-		}else {
-			String message = "Invalid Date ";
-			response.sendRedirect("DateCheck.jsp?errorMessage=" + message);
+
+			} else if (isValidDate && isValilTicket) {
+				String message = "Train Avialable";
+				response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
+
+				session.setAttribute("USER_TICKET", "2");
+			} else {
+				String message = "Invalid Date ";
+				response.sendRedirect("DateCheck.jsp?errorMessage=" + message);
+			}
+
+		} catch (Exception e) {
+			e.getLocalizedMessage();
 		}
-	
-	}catch(Exception e) {
-		e.getLocalizedMessage();
-	}
-		
+
 	}
 }

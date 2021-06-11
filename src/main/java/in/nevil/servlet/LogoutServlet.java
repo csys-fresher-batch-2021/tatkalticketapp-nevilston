@@ -15,10 +15,12 @@ public class LogoutServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		
 		response.sendRedirect("login.jsp");
+	}catch(Exception e) {
+		e.getMessage();
+		}
 	}
-
 }

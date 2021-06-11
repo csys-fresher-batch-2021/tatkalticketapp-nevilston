@@ -71,9 +71,9 @@ public class TrainDAO {
 		boolean isdeleted = false;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql ="DELETE FROM train_details WHERE train_number ='"+trainNumber+"'";
-			
+			String sql ="DELETE FROM train_details WHERE train_number=?";
 			pst = connection.prepareStatement(sql);
+			pst.setString(1, trainNumber);
 			pst.executeUpdate();
 			isdeleted = true;
 		} catch (ClassNotFoundException | SQLException e) {
