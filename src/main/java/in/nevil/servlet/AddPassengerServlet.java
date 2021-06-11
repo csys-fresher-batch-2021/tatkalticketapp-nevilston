@@ -33,9 +33,10 @@ public class AddPassengerServlet extends HttpServlet {
 		String trainName = (String) session.getAttribute("TRAIN_NAME");
 		String trainNumber=  (String) session.getAttribute("TRAIN_NUMBER");
 		LocalDate travelDate =(LocalDate) session.getAttribute("DATE");
-		int passengerAge = Integer.parseInt(age);
+		
 		try {
 			if (tickets == 1) {
+				int passengerAge = Integer.parseInt(age);
 				boolean addPassenger1 = AddPassenger.addPassenger(id,passengerName, passengerAge, passengerGender);
 				AddPassenger.tempPassenger(id, passengerName, passengerAge, passengerGender);
 				DisplayBookingService.summaryBooking(id,trainNumber,  trainName, travelDate);
@@ -43,6 +44,7 @@ public class AddPassengerServlet extends HttpServlet {
 					response.sendRedirect("Summary.jsp");
 				}
 			} else if (tickets == 2) {
+				int passengerAge = Integer.parseInt(age);
 				String passengerName2 = request.getParameter("passengername2");
 				String passengerGender2 = request.getParameter("gender2");
 				String age2 = request.getParameter("passengerAge2");

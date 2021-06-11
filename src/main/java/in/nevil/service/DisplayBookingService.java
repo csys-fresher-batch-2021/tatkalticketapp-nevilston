@@ -61,13 +61,10 @@ public class DisplayBookingService {
 			double cost2 = (d * fare);
 			totalCost = (int)cost1 +(int)cost2;
 		}
-		if(c!=0) {
+		if(c==1||c==2) {
 				double cost = ((c * fare) * 0.5);
 				totalCost=(int) cost;
-			}else if(c==2) {
-				double cost = ((c*fare)*0.5);
-				totalCost =(int) cost;
-			}else if(d==1) {
+		}else if(d==1) {
 				double cost = (d * fare);
 				totalCost = (int) cost;
 			}else {
