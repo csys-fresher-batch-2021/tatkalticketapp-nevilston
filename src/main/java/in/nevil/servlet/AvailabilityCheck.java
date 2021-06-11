@@ -2,6 +2,7 @@
 package in.nevil.servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,9 +23,13 @@ public class AvailabilityCheck extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String userJourneyDate = request.getParameter("journeydate");
+		LocalDate journeyDate =LocalDate.parse(userJourneyDate);
+		session.setAttribute("DATE", journeyDate);
 		int numberOfTicket = Integer.parseInt(request.getParameter("ticketneeded"));
-		System.out.println(numberOfTicket);
+		
+		
 				try {
 		boolean isValilTicket = TicketAvailablity.checkTicketAvailability(numberOfTicket);
 		boolean isValidDate = DateValidator.journeyDateCheck(userJourneyDate);
@@ -34,13 +39,13 @@ public class AvailabilityCheck extends HttpServlet {
 		if (isValidDate && isValilTicket && numberOfTicket == 1 ) {
 				String message = "Train Available";
 				response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
-				HttpSession session = request.getSession();
+				
 				session.setAttribute("USER_TICKET", "1");
 				
 		} else if(isValidDate && isValilTicket ) {
 			String message ="Train Avialable";
 			response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
-			HttpSession session = request.getSession();
+			
 			session.setAttribute("USER_TICKET", "2");
 		}else {
 			String message = "Invalid Date ";

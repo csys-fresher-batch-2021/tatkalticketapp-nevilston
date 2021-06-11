@@ -87,6 +87,27 @@ public class TrainDAO {
 		return isdeleted;
 		
 	}
-	
+	public int getTrainFare(String trainNumber) throws SQLException {
+		int fare =0;
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql ="select train_fare from train_details Where train_number=?";
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, trainNumber);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				fare = rs.getInt("train_fare");
+			}
+	} catch (ClassNotFoundException e) {
+			e.getMessage();
+			} finally {
+		ConnectionUtil.close(rs, pst, connection);
+	}
+	return fare;
+}
+
 }
 

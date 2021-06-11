@@ -69,7 +69,7 @@ public class UserDAO {
 				userId = rs.getInt("user_id");
 			}
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}

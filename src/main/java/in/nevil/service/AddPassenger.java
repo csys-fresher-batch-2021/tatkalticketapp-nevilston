@@ -2,6 +2,8 @@
 package in.nevil.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import in.nevil.dao.PassengerDAO;
 import in.nevil.model.Passenger;
@@ -18,7 +20,7 @@ public class AddPassenger {
 	}
 	
 	private static PassengerDAO passengerDAO = new PassengerDAO();
-
+	 static  List<Passenger> temPassengerList = new ArrayList<>();
 	
 	
 	//validating the entered details and adding the passenger details
@@ -34,10 +36,18 @@ public class AddPassenger {
 				isValidPassenger = true;
 			}
 		return isValidPassenger;
+	}	
+	public static void  tempPassenger(int id,String passengerName, int passengerAge, String passengerGender ) {
+		Passenger passenger = new Passenger(id,passengerName, passengerAge,passengerGender);
+		temPassengerList.add(passenger);
+		getTempPassengerList();
+		
+		
 	}
 	
-
-	
-	
+	public static List<Passenger> getTempPassengerList(){
+		return temPassengerList;
+		
+	}
 }
 

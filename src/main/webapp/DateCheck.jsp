@@ -18,9 +18,12 @@
 		<form action="AvailabilityCheck" method="get">
 			<%
 				String trainName = request.getParameter("trainName");
+				String trainNumber =request.getParameter("trainNumber");
+				session.setAttribute("TRAIN_NAME", trainName);
+				session.setAttribute("TRAIN_NUMBER", trainNumber);
 			%>
 			<h4>
-				The Train Selected is <%=trainName%></h4>
+				The Train Selcted is <%=trainName%> <%=trainNumber%></h4>
 			<br /> <label for="dateCheck"> Journey Date</label>
 			<p>
 				<input type="date" name="journeydate"

@@ -1,5 +1,3 @@
-
-
 package in.nevil.dao;
 
 import java.sql.Connection;
@@ -14,7 +12,7 @@ import in.nevil.model.Passenger;
 
 public class PassengerDAO {
 
-	public void addPassenger(Passenger passenger) throws  SQLException, ClassNotFoundException 
+	public void addPassenger(Passenger passenger) throws ClassNotFoundException, SQLException { 
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -60,5 +58,5 @@ public class PassengerDAO {
 			ConnectionUtil.close(rs, pst, connection);
 		}
 		return getPassengerList;
-
+	}
 } 

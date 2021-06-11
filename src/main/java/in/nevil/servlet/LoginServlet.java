@@ -25,7 +25,6 @@ public class LoginServlet extends HttpServlet {
 			UserDAO userDAO = new UserDAO();
 				int userId= userDAO.getUserId(userNumber);
 				long adminUserNumber =Long.parseLong(stringAdminNumber);
-				System.out.println(adminUserNumber);
 				String adminPassword = request.getParameter("adminPassword");
 				boolean isValidAdmin = UserService.adminValidation(adminUserNumber, adminPassword);
 				boolean isValidUser = UserService.userValidation(adminUserNumber, adminPassword);
@@ -49,8 +48,7 @@ public class LoginServlet extends HttpServlet {
 					response.sendRedirect("login.jsp?errorMessage=" + message);
 				}
 		}catch(Exception e){
-			e.printStackTrace();
-		}
+			e.getMessage();		}
 		
 		
 	}
