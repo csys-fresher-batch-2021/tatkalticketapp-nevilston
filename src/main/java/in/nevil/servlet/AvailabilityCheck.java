@@ -26,6 +26,10 @@ public class AvailabilityCheck extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String userJourneyDate = request.getParameter("journeydate");
+		String boardingStation =request.getParameter("boardingStation");
+		session.setAttribute("BOARDINGPOINT", boardingStation);
+		String destinationStation =request.getParameter("DestinationStation");
+		session.setAttribute("ENDINGPOINT", destinationStation);
 		LocalDate journeyDate = LocalDate.parse(userJourneyDate);
 		session.setAttribute("DATE", journeyDate);
 

@@ -20,6 +20,8 @@
 			<h3>Preview Of Ticket</h3>
 		</div>
 		<%
+		String From =(String)session.getAttribute("BOARDINGPOINT");
+		String TO=(String)session.getAttribute("ENDINGPOINT");
 			DisplayBookingService display = new DisplayBookingService();
 				List<Booking> tempBookingList = display.getTempBooking();
 				for (Booking details : tempBookingList) {
@@ -29,7 +31,10 @@
 			<%=details.getTrainNumber()%>
 		</p>
 		<p>
-			Train Name:<%=details.getTrainName()%></p>
+		
+		FROM:<%=From%> TO:<%=TO%> 
+		
+		Train Name:<%=details.getTrainName()%></p>
 		<p>
 			PNR NO:<%=details.getPnrNumber()%></p>
 		<p>
@@ -56,6 +61,7 @@
 			 
 				final List<Passenger> listPassenger = AddPassenger.getTempPassengerList();
 				int i = 0;
+				
 				for (Passenger passenger : listPassenger) {
 					i++;
 				%>
@@ -70,13 +76,15 @@
 					<tbody>
 		</table>
 				<div class="text-center">
-						<button class="btn btn-primary" type="submit">Book</button>
+						<a href="BookedTickets.jsp" onclick="sucess()" class="btn btn-info">Book</a>
 						<button class="btn btn-danger">Cancel</button>
 				</div>
-
+				
 			</main>
 			<script>
-			
+			function sucess(){
+				alert("SucessFully Booked");
+			}
 			</script>
 </body>
 </html>

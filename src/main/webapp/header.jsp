@@ -23,12 +23,13 @@ String role = (String) session.getAttribute("ROLE");
 					href="trainListView.jsp">Train Available</a></li>
 				<% if (loggedInUsername != null && ! role.equalsIgnoreCase("ADMIN")){ %>
 
-				<li class="nav-item"><a class="nav-link" href="#">Booked Tickets
+				<li class="nav-item"><a class="nav-link" href="BookedTickets.jsp">Booked Tickets
 						</a></li>
 				<%} %>
 				<% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 				<li class="nav-item"><a class="nav-link" href="addTrain.jsp">Add
-						Train Available</a></li>
+						Train</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Booking Details</a>
 				<%} %>
 			</ul>
 			<ul class="navbar-nav ml-auto mt-2 mt-lg-0">

@@ -29,10 +29,12 @@ public class AddTrainServlet extends HttpServlet {
 		String trainName = request.getParameter("trainName");
 		int seatAvailables = Integer.parseInt(request.getParameter("seatAvailable"));
 		int trainFare = Integer.parseInt(request.getParameter("trainFare"));
+		String trainTime= request.getParameter("trainTime");
+		System.out.println(trainTime);
 	
 		try {
 		// checking the TrainList
-		boolean isAddTrain = TrainService.addTrain(trainName, trainNumber, seatAvailables,trainFare);
+		boolean isAddTrain = TrainService.addTrain(trainName, trainNumber, seatAvailables,trainFare,trainTime);
 		if (isAddTrain) {
 			out.println("alert('Train Added ');");
 			response.sendRedirect("trainListView.jsp");

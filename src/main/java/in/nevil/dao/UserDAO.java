@@ -73,6 +73,7 @@ public class UserDAO {
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}
+		System.out.println(userId);
 		return userId;
 
 	}
