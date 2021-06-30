@@ -1,6 +1,14 @@
 package in.nevil.model;
 
 public class Train {
+	@Override
+	public String toString() {
+		return "Train [trainTimeing=" + trainTimeing + ", trainName=" + trainName + ", trainNumber=" + trainNumber
+				+ ", trainFare=" + trainFare + ", availableTickets=" + availableTickets + "]";
+	}
+
+
+
 	private String trainTimeing;
 	private  String trainName;
 	private  String trainNumber;

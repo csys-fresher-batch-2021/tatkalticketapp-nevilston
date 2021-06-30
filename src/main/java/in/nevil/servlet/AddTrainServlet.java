@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.nevil.exceptions.CannotAddTrainException;
 import in.nevil.service.TrainService;
+import in.nevil.validator.Validator;
 
 /**
  * Servlet implementation class AddTrainServlet
@@ -25,24 +25,22 @@ public class AddTrainServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
-		String trainNumber = request.getParameter("trainNumber");
-		String trainName = request.getParameter("trainName");
-		int seatAvailables = Integer.parseInt(request.getParameter("seatAvailable"));
-		int trainFare = Integer.parseInt(request.getParameter("trainFare"));
-		String trainTime= request.getParameter("trainTime");
-		System.out.println(trainTime);
-	
 		try {
-		// checking the TrainList
-		boolean isAddTrain = TrainService.addTrain(trainName, trainNumber, seatAvailables,trainFare,trainTime);
-		if (isAddTrain) {
-			out.println("alert('Train Added ');");
-			response.sendRedirect("trainListView.jsp");
-			
-		} else {
-			throw new CannotAddTrainException("Cannot Add Train");
-		}
+			String trainNumber = request.getParameter("trainNumber");
+			String trainName = request.getParameter("trainName");
+			String seatAvailable = request.getParameter("seatAvailable");
+			int seatAvailables = Validator.numberFormater(seatAvailable);
+			String Fare = request.getParameter("trainFare");
+			int trainFare = Validator.numberFormater(Fare);
+			String trainTime= request.getParameter("trainTime");
+			// checking the TrainList
+			boolean isAddTrain = TrainService.addTrain(trainName, trainNumber, seatAvailables, trainFare, trainTime);
+			if (isAddTrain) {
+				out.println("alert('Train Added ');");
+				response.sendRedirect("trainListView.jsp");
+			}
 		}catch(Exception e) {
+			e.printStackTrace();
 			String errorMessage = "Unable to Add Train";
 			response.sendRedirect("addTrain.jsp?errorMessage=" + errorMessage);
 		}

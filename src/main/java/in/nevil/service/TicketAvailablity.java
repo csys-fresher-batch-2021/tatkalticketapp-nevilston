@@ -26,10 +26,13 @@ public class TicketAvailablity {
 			/**
 			 * per user only Two ticket is allowed and availability check
 			 */
-			if (train.getAvailableTickets() >= (numberOfTicket) && numberOfTicket <= 2){
+			
+			if (train.getAvailableTickets() >= (numberOfTicket) && numberOfTicket >= 2){
 				isAvailable = true;
+				System.out.println("hi");
 			}
 			else {
+				System.out.println("hi1");
 				isAvailable =false;	
 			}
 		}
@@ -38,6 +41,7 @@ public class TicketAvailablity {
 			e.printStackTrace();
 			
 		}
+		System.out.println(isAvailable);
 		return isAvailable;
 	}
 

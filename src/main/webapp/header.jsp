@@ -29,7 +29,7 @@ String role = (String) session.getAttribute("ROLE");
 				<% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 				<li class="nav-item"><a class="nav-link" href="addTrain.jsp">Add
 						Train</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Booking Details</a>
+				<li class="nav-item"><a class="nav-link" href="adminbooking.jsp">Booking Details</a>
 				<%} %>
 			</ul>
 			<ul class="navbar-nav ml-auto mt-2 mt-lg-0">

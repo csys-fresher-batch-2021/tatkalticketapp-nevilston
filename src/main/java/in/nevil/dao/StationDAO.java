@@ -31,7 +31,7 @@ public class StationDAO {
 				stationList.add(station);
 			}
 		}catch(ClassNotFoundException |SQLException e) {
-				e.getMessage();
+				e.printStackTrace();
 			}finally {
 				ConnectionUtil.close(rs, pst, connection);
 			}

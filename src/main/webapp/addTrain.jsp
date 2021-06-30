@@ -8,6 +8,9 @@
 	<main class="container-fluid">
 		<h3>Add New Train Route</h3>
 		<!--HTML Web Page For adding Train -->
+		<%String errorMessage= request.getParameter("errorMessage");
+		out.println(errorMessage);
+		%>
 		<form action="AddTrainServlet" method="get">
 			<label for="newTrainName">Train Number</label> <input type="text"
 				name="trainNumber" placeholder="Enter Train Number" required

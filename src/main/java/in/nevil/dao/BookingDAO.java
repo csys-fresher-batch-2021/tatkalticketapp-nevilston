@@ -32,14 +32,16 @@ public class BookingDAO {
 			pst.setInt(7, booking.getBookingId());
 			pst.setString(8, booking.getJourneyTime());
 			pst.executeUpdate();
-		} finally {
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}finally {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
 
 	static List<FinalBookingDetail> bookedDetails = new ArrayList<>();
 
-	public static void getBookedDetails(int userid) {
+	public void getBookedDetails(int userid) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -63,19 +65,15 @@ public class BookingDAO {
 				FinalBookingDetail booking = new FinalBookingDetail(journeyDate, ticketPNRNumber, bookedDate, trainName,
 						trainNumber, fare, userId, journeyTime);
 				bookedDetails.add(booking);
-
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
 			e.printStackTrace();
-
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}
 	}
 
 	public List<FinalBookingDetail> getFinalList() {
-
 		return bookedDetails;
 	}
 }

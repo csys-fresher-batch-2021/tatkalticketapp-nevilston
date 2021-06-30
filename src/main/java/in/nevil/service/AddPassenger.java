@@ -16,7 +16,7 @@ public class AddPassenger {
 	 */
 	
 	private AddPassenger() {
-		throw new IllegalStateException("Utill class");
+		//default constructor
 	}
 	
 	private static PassengerDAO passengerDAO = new PassengerDAO();
@@ -30,9 +30,7 @@ public class AddPassenger {
 		boolean isUserIdValid = FeildValidator.isPassangerAgeEmptyAndNotNull(passengerAge);
 		boolean isValidPasswordFormat = Validator.isValidPassengerName(passengerName);
 			if (isUserIdValid && isValidPasswordFormat) {
-
 				passengerDAO.addPassenger(new Passenger(id,passengerName, passengerAge, passengerGender));
-
 				isValidPassenger = true;
 			}
 		return isValidPassenger;
@@ -41,13 +39,10 @@ public class AddPassenger {
 		Passenger passenger = new Passenger(id,passengerName, passengerAge,passengerGender);
 		temPassengerList.add(passenger);
 		getTempPassengerList();
-		
-		
 	}
 	
 	public static List<Passenger> getTempPassengerList(){
 		return temPassengerList;
-		
 	}
 }
 

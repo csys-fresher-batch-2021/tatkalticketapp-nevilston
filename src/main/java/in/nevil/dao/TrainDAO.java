@@ -26,7 +26,9 @@ public class TrainDAO {
 			pst.setInt(4,train.getTrainFare());
 			pst.setString(5, train.getTrainTimeing());
 			pst.executeUpdate();
-		}  finally {
+		}  catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
 		

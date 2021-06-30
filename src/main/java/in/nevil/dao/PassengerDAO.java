@@ -25,7 +25,9 @@ public class PassengerDAO {
 			pst.setInt(3, passenger.getPassangerAge());
 			pst.setString(4, passenger.getPassengerGender());
 			pst.executeUpdate();
-		}  finally {
+		}  catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
@@ -41,19 +43,14 @@ public class PassengerDAO {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				int passangerBooKid = rs.getInt("passenger_id");
-				
 				String passengerName = rs.getString("passenger_name");
-				
 				String passengerGender = rs.getString("passenger_gender");
-				
 				int passengerAge = rs.getInt("passenger_age");
-        
 				Passenger passenger = new Passenger(passangerBooKid,passengerName, passengerAge,passengerGender);
 				getPassengerList.add(passenger);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
-			
+			e.printStackTrace();	
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}

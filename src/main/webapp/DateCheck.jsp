@@ -54,14 +54,14 @@
 				%>
 				<br />
 
-				<button class="btn btn-primary">Check</button>
+				<button class="btn btn-primary">Procced</button>
 				<br/>
 			</form>		
 			<table class="table table-bordered">
 				<thead>
 				<tr>
 					<th scope="col">S.NO</th>
-					<th scope="col">Station ID</th>
+					
 					<th scope="col">Station Name</th>
 					
 				</tr>
@@ -78,7 +78,7 @@
 			<tr>
 					<td><%=i%></td>
 					
-					<td><%=stationName.getStationId()%></td>
+					
 					<td><%=stationName.getStationName()%></td>
 					
 			</tr>

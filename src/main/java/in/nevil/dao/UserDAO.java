@@ -23,6 +23,8 @@ public class UserDAO {
 			pst.setLong(2, user.getUserNumber());
 			pst.setString(3, user.getUserPassword());
 			pst.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -69,11 +71,10 @@ public class UserDAO {
 				userId = rs.getInt("user_id");
 			}
 		} catch (ClassNotFoundException e) {
-			e.getMessage();
+			e.printStackTrace();
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}
-		System.out.println(userId);
 		return userId;
 
 	}
