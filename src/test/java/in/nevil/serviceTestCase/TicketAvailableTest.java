@@ -22,28 +22,5 @@ public class TicketAvailableTest {
 		boolean isAvailable = TicketAvailablity.checkTicketAvailability(numberofTickets);
 		assertFalse(isAvailable);
 	}
-	/**
-	 * InValid Number of Tickets needed
-	 * @throws TicketNotAvailableExceptions
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	@Test
-	public void invalidTicketAvailablityChecktest() throws ClassNotFoundException, SQLException, TicketNotAvailableExceptions {
-		int numberofTickets = 10;
-		boolean isAvailable = TicketAvailablity.checkTicketAvailability(numberofTickets);
-		assertFalse(isAvailable);
-	}
-	/**
-	 * Ticket needed is 1 and valid
-	 * @throws TicketNotAvailableExceptions
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	@Test
-	public void valid1TicketAvailablityChecktest() throws ClassNotFoundException, SQLException, TicketNotAvailableExceptions {
-		int numberofTickets = 10;
-		boolean isAvailable = TicketAvailablity.checkTicketAvailability(numberofTickets);
-		assertFalse(isAvailable);
-	}
+
 }

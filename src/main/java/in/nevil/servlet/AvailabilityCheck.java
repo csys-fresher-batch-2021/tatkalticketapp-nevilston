@@ -1,6 +1,4 @@
-
 package in.nevil.servlet;
-
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -20,7 +18,6 @@ import in.nevil.validator.StationValidator;
 @WebServlet("/AvailabilityCheck")
 public class AvailabilityCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -33,13 +30,12 @@ public class AvailabilityCheck extends HttpServlet {
 		LocalDate journeyDate = LocalDate.parse(userJourneyDate);
 		session.setAttribute("DATE", journeyDate);
 		String trainNumber = (String) session.getAttribute("TRAIN_NUMBER");
-
 		try {
 			int numberOfTicket = Integer.parseInt(request.getParameter("ticketneeded"));
 			boolean isValidStation = StationValidator.trainValidator(boardingStation, destinationStation, trainNumber);
 			boolean isValidDate = DateValidator.journeyDateCheck(userJourneyDate);
 			if(isValidStation) {
-				if (isValidDate && numberOfTicket == 1 && isValidStation) {
+				if (isValidDate && numberOfTicket == 1) {
 					String message = "Train Available";
 					response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
 					session.setAttribute("USER_TICKET", "1");
@@ -56,10 +52,8 @@ public class AvailabilityCheck extends HttpServlet {
 				String message = "Enter Valid Station or Check the date Entered ";
 				response.sendRedirect("DateCheck.jsp?errorMessage=" +message);
 			}
-
 		} catch (Exception e) {
 			e.getLocalizedMessage();
 		}
-
 	}
 }
