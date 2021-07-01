@@ -18,7 +18,7 @@ public class StationValidator {
 		for (Station stationName : station) {
 			if (stationName.getStationName().contains(sourceStation)
 					&& stationName.getStationName().contains(destinationStation)
-					&& sourceStation != destinationStation) {
+			) {
 				isValid = true;
 
 			} else {

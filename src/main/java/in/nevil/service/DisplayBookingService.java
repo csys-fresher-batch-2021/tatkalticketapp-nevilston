@@ -59,11 +59,11 @@ public class DisplayBookingService {
 		}
 		else if(d==1&&c==1) {
 			double cost1=((c* fare)* 0.5);
-			double cost2=((d*fare));
+			double cost2 = (d * fare);
 			totalCost=(int)cost1+(int)cost2;
 		}
 		if(c==0&&d<=2) {
-			double cost1=((d*fare));
+			double cost1 = (d * fare);
 			totalCost=(int)cost1;
 		}else if(d==0&&c<=2) {
 			double cost1=((c* fare)* 0.5);

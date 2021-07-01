@@ -30,8 +30,8 @@ public class AddTrainServlet extends HttpServlet {
 			String trainName = request.getParameter("trainName");
 			String seatAvailable = request.getParameter("seatAvailable");
 			int seatAvailables = Validator.numberFormater(seatAvailable);
-			String Fare = request.getParameter("trainFare");
-			int trainFare = Validator.numberFormater(Fare);
+			String fare = request.getParameter("trainFare");
+			int trainFare = Validator.numberFormater(fare);
 			String trainTime= request.getParameter("trainTime");
 			// checking the TrainList
 			boolean isAddTrain = TrainService.addTrain(trainName, trainNumber, seatAvailables, trainFare, trainTime);

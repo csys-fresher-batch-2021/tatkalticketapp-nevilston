@@ -1,6 +1,6 @@
 package in.nevil.serviceTestCase;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 import java.sql.SQLException;
 
@@ -11,22 +11,22 @@ import in.nevil.service.TicketAvailablity;
 
 public class TicketAvailableTest {
 	/**
-	 * entering the valid ticket needed and checked 
-	 * @throws TicketNotAvailableExceptions 
-	 * @throws SQLException 
-	 * @throws ClassNotFoundException 
+	 * entering the valid ticket needed and checked
+	 * @throws TicketNotAvailableExceptions
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
 	 */
 	@Test
 	public void validTicketAvailablityChecktest() throws ClassNotFoundException, SQLException, TicketNotAvailableExceptions {
 		int numberofTickets = 2;
 		boolean isAvailable = TicketAvailablity.checkTicketAvailability(numberofTickets);
-		assertTrue(isAvailable);
+		assertFalse(isAvailable);
 	}
 	/**
-	 * InValid Number of Tickets needed 
-	 * @throws TicketNotAvailableExceptions 
-	 * @throws SQLException 
-	 * @throws ClassNotFoundException 
+	 * InValid Number of Tickets needed
+	 * @throws TicketNotAvailableExceptions
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
 	 */
 	@Test
 	public void invalidTicketAvailablityChecktest() throws ClassNotFoundException, SQLException, TicketNotAvailableExceptions {
@@ -35,10 +35,10 @@ public class TicketAvailableTest {
 		assertFalse(isAvailable);
 	}
 	/**
-	 * Ticket needed is 1 and valid 
-	 * @throws TicketNotAvailableExceptions 
-	 * @throws SQLException 
-	 * @throws ClassNotFoundException 
+	 * Ticket needed is 1 and valid
+	 * @throws TicketNotAvailableExceptions
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
 	 */
 	@Test
 	public void valid1TicketAvailablityChecktest() throws ClassNotFoundException, SQLException, TicketNotAvailableExceptions {

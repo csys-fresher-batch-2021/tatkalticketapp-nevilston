@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Booking History</title>
@@ -15,7 +15,7 @@
 		<h3> Booking List</h3>
 		<!-- Table Is Created  -->
 		<table class="table table-bordered">
-			
+			<caption>Due to Covid-19 Less Trains Are Operated</caption>
 			<thead>
 				<tr>
 					<th scope="col">S.NO</th>
@@ -46,5 +46,7 @@
 					<td><a class="btn btn-danger">Cancel</a></td>
 				</tr>
 				<%} %>
+				</table>
+				</main>
 </body>
 </html>

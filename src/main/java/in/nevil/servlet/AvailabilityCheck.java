@@ -39,7 +39,7 @@ public class AvailabilityCheck extends HttpServlet {
 			boolean isValidStation = StationValidator.trainValidator(boardingStation, destinationStation, trainNumber);
 			boolean isValidDate = DateValidator.journeyDateCheck(userJourneyDate);
 			if(isValidStation) {
-				if (isValidDate && numberOfTicket == 1) {
+				if (isValidDate && numberOfTicket == 1 && isValidStation) {
 					String message = "Train Available";
 					response.sendRedirect("getPassangerInfromation.jsp?errorMessage=" + message);
 					session.setAttribute("USER_TICKET", "1");
@@ -53,9 +53,9 @@ public class AvailabilityCheck extends HttpServlet {
 					response.sendRedirect("DateCheck.jsp?errorMessage=" + message);
 				}
 			} else {
-					String message="Enter Valid Station";
-					response.sendRedirect("DateCheck.jsp?errorMessage=" +message);
-				}
+				String message = "Enter Valid Station or Check the date Entered ";
+				response.sendRedirect("DateCheck.jsp?errorMessage=" +message);
+			}
 
 		} catch (Exception e) {
 			e.getLocalizedMessage();
