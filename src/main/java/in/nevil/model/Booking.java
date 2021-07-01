@@ -4,7 +4,20 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Booking {
-	
+	private String journeyTime;
+	public String getJourneyTime() {
+		return journeyTime;
+	}
+	public void setJourneyTime(String journeyTime) {
+		this.journeyTime = journeyTime;
+	}
+	private int bookingId;
+	public int getBookingId() {
+		return bookingId;
+	}
+	public void setBookingId(int bookingId) {
+		this.bookingId = bookingId;
+	}
 	private LocalDate journeyDate;
 	public LocalDate getJourneyDate() {
 		return journeyDate;
@@ -47,10 +60,25 @@ public class Booking {
 	private String trainName;
 	private String trainNumber;
 	private int cost;
+	private String boardingStation;
+	public String getBoardingStation() {
+		return boardingStation;
+	}
+	public void setBoardingStation(String boardingStation) {
+		this.boardingStation = boardingStation;
+	}
+	public String getDestinationPoint() {
+		return destinationPoint;
+	}
+	public void setDestinationPoint(String destinationPoint) {
+		this.destinationPoint = destinationPoint;
+	}
+	private String destinationPoint;
+
 	
 	
 	public Booking( int pnrNumber, LocalDateTime dateAndTime, String trainName, String trainNumber,LocalDate journeyDate,
-			int cost) {
+			int cost ,int bookingId,String journeyTime) {
 		super();
 		this.pnrNumber = pnrNumber;
 		this.dateAndTime = dateAndTime;
@@ -58,6 +86,8 @@ public class Booking {
 		this.trainNumber = trainNumber;
 		this.cost = cost;
 		this.journeyDate=journeyDate;
+		this.bookingId=bookingId;
+		this.journeyTime=journeyTime;
 	}
 	@Override
 	public String toString() {

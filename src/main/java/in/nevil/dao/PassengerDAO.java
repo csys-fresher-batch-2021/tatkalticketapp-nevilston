@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.nevil.util.ConnectionUtil;
 import in.nevil.model.Passenger;
+import in.nevil.util.ConnectionUtil;
 
 public class PassengerDAO {
 
-	public void addPassenger(Passenger passenger) throws ClassNotFoundException, SQLException { 
+	public void addPassenger(Passenger passenger) throws ClassNotFoundException, SQLException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -25,7 +25,9 @@ public class PassengerDAO {
 			pst.setInt(3, passenger.getPassangerAge());
 			pst.setString(4, passenger.getPassengerGender());
 			pst.executeUpdate();
-		}  finally {
+		}  catch (ClassNotFoundException | SQLException e) {
+			e.getMessage();
+		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
@@ -41,22 +43,17 @@ public class PassengerDAO {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				int passangerBooKid = rs.getInt("passenger_id");
-				
 				String passengerName = rs.getString("passenger_name");
-				
 				String passengerGender = rs.getString("passenger_gender");
-				
 				int passengerAge = rs.getInt("passenger_age");
-        
 				Passenger passenger = new Passenger(passangerBooKid,passengerName, passengerAge,passengerGender);
 				getPassengerList.add(passenger);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.getMessage();
-			
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}
 		return getPassengerList;
 	}
-} 
+}

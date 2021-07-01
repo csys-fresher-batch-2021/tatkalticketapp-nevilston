@@ -28,7 +28,9 @@ String role = (String) session.getAttribute("ROLE");
 					<th scope="col">S.NO</th>
 					<th scope="col">Train No</th>
 					<th scope="col">Train Name</th>
-					<th scope="col">Available Tickets</th>
+					<th scope="col">Train Timing</th>
+					<th scope="col">Seats Available</th>
+					<th scope="col">Price</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,25 +45,24 @@ String role = (String) session.getAttribute("ROLE");
 					<td><%=i%></td>
 					<td><%=train.getTrainNumber()%></td>
 					<td><%=train.getTrainName()%></td>
+					<td><%=train.getTrainTimeing()%></td>
 					<td><%=train.getAvailableTickets()%></td>
+					<td><%=train.getTrainFare()%></td>
 					<%
 					if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER") && train.getAvailableTickets()!=0) {
 					%>
 
-					<td><a href="DateCheck.jsp?trainName=<%=train.getTrainName()%>&trainNumber=<%=train.getTrainNumber() %>" class="btn btn-primary">Book</a>
-					
-					<% } %> 
- 					
- 					<%
+					<td><a
+						href="DateCheck.jsp?trainName=<%=train.getTrainName()%>&trainNumber=<%=train.getTrainNumber()%>&trainTime=<%=train.getTrainTimeing() %>"
+						class="btn btn-primary">Book</a> <% } %> <%
 						 if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 						 %>
 					<td><a
 						href="DeleteTrainServlet?TrainNumber=<%=train.getTrainNumber()%>"
-						class="btn btn-danger">Delete</a>
-						 <%} %>
+						class="btn btn-danger">Delete</a> <%} %>
 				</tr>
 				<%} %>
-
+			
 			<tbody>
 		</table>
 	</main>

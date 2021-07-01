@@ -4,6 +4,24 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class FinalBookingDetail {
+	private int bookingId;
+	private String joruneyTime;
+	public String getJoruneyTime() {
+		return joruneyTime;
+	}
+
+	public void setJoruneyTime(String joruneyTime) {
+		this.joruneyTime = joruneyTime;
+	}
+
+	public int getBookingId() {
+		return bookingId;
+	}
+
+	public void setBookingId(int bookingId) {
+		this.bookingId = bookingId;
+	}
+
 	private LocalDate journeyDate;
 	private int pnrNumber;
 	private LocalDateTime dateAndTime;
@@ -15,8 +33,8 @@ public class FinalBookingDetail {
 	private int bookedPssengerAge;
 
 	public FinalBookingDetail(LocalDate journeyDate, int pnrNumber, LocalDateTime dateAndTime, String trainName,
-			String trainNumber, int cost, String bookedPassengerName, String bookedPassengerGender,
-			int bookedPssengerAge) {
+			String trainNumber, int cost, 
+			int bookingId,String jorneyTime) {
 		super();
 		this.journeyDate = journeyDate;
 		this.pnrNumber = pnrNumber;
@@ -24,9 +42,16 @@ public class FinalBookingDetail {
 		this.trainName = trainName;
 		this.trainNumber = trainNumber;
 		this.cost = cost;
-		this.bookedPassengerName = bookedPassengerName;
-		this.bookedPassengerGender = bookedPassengerGender;
-		this.bookedPssengerAge = bookedPssengerAge;
+		this.bookingId=bookingId;
+		this.joruneyTime=jorneyTime;
+	}
+
+	@Override
+	public String toString() {
+		return "FinalBookingDetail [bookingId=" + bookingId + ", journeyDate=" + journeyDate + ", pnrNumber="
+				+ pnrNumber + ", dateAndTime=" + dateAndTime + ", trainName=" + trainName + ", trainNumber="
+				+ trainNumber + ", cost=" + cost + ", bookedPassengerName=" + bookedPassengerName
+				+ ", bookedPassengerGender=" + bookedPassengerGender + ", bookedPssengerAge=" + bookedPssengerAge + "]";
 	}
 
 	public LocalDate getJourneyDate() {

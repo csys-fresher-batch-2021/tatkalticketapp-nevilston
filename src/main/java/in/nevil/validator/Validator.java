@@ -3,6 +3,8 @@ package in.nevil.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import in.nevil.exceptions.CannotAddTrainException;
+
 public class Validator {
 
 	private Validator() {
@@ -24,7 +26,7 @@ public class Validator {
 	/**
 	 * This method is a combined validation method where all the validations are
 	 * combined to give one result for UserId
-	 * 
+	 *
 	 * @param employeeId
 	 * @return
 	 */
@@ -37,13 +39,13 @@ public class Validator {
 		if (isEmptyAndNull && isValidUserIdLength) {
 			isValidAllParameters = true;
 		}
-		
+
 		return isValidAllParameters;
 	}
 
 	/**
 	 * This method verifies whether the password is in valid format or not
-	 * 
+	 *
 	 * @param password
 	 * @return
 	 */
@@ -57,7 +59,7 @@ public class Validator {
 		}
 		return isValidFormat;
 	}
-	
+
 	public static boolean isValidPassengerName(String passengerName) {
 		boolean isValidPassengerName = false;
 		if(passengerName != null) {
@@ -67,5 +69,16 @@ public class Validator {
 			isValidPassengerName=false;
 		}
 		return isValidPassengerName;
+	}
+
+	public static int numberFormater(String number) throws CannotAddTrainException {
+		String numberToFormat = number;
+		int fromatedNumber;
+		try {
+			fromatedNumber = Integer.parseInt(numberToFormat);
+		} catch (NumberFormatException e) {
+			throw new CannotAddTrainException("Enter Valid Input");
+		}
+		return fromatedNumber;
 	}
 }

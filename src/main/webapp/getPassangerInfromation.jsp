@@ -6,7 +6,7 @@
 String ticketneeded = (String) session.getAttribute("USER_TICKET");
 %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Passenger Information</title>

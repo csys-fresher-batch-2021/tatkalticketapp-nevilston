@@ -2,6 +2,7 @@
 package in.nevil.model;
 
 public class Passenger {
+	
 	private int passengerBookingId;
 	public int getPassengerBookingId() {
 		return passengerBookingId;

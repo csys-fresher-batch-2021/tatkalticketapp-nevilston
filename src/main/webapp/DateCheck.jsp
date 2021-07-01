@@ -1,4 +1,6 @@
 
+<%@page import="in.nevil.model.Station"%>
+<%@page import="in.nevil.dao.StationDAO"%>
 <%@page import="in.nevil.model.Train"%>
 <%@page import="java.util.List"%>
 <%@page import="in.nevil.dao.TrainDAO"%>
@@ -19,20 +21,29 @@
 			<%
 				String trainName = request.getParameter("trainName");
 				String trainNumber =request.getParameter("trainNumber");
+				String trainTime =request.getParameter("trainTime");
+				session.setAttribute("TRAIN_TIME",trainTime );
 				session.setAttribute("TRAIN_NAME", trainName);
 				session.setAttribute("TRAIN_NUMBER", trainNumber);
 			%>
 			<h4>
 				The Train Selcted is <%=trainName%> <%=trainNumber%></h4>
+				
+				
+			
+			<label for="boardingStation">Boarding Point</label>
+					<input type="text"name="boardingStation" placeholder="Boarding Point " required autofocus /><br/>
+					<label for="boardingStation">Destination Point</label>
+					<input type="text"name="DestinationStation" placeholder="Destination Point " required autofocus /><br/> 
 			<br /> <label for="dateCheck"> Journey Date</label>
 			<p>
 				<input type="date" name="journeydate"
 					placeholder="Enter journey Date " required autofocus></input><br>
 			</p>
-
+		
 			<label for="dateCheck">Number of Ticket </label>
-				<input TYPE="radio" name="ticketneeded" value="1" />1
-				<Input TYPE="radio" name="ticketneeded" value="2" />2<br> <br /> 
+				<input TYPE="radio" name="ticketneeded" value="1" required autofocus />1
+				<Input TYPE="radio" name="ticketneeded" value="2" required autofocus/>2<br> <br /> 
 				
 
 				<%
@@ -43,13 +54,40 @@
 				%>
 				<br />
 
-				<button class="btn btn-primary">Check</button>
+				<button class="btn btn-primary">Procced</button>
 				<br/>
+			</form>		
+			<table class="table table-bordered">
+				<caption>Due to Covid-19 Less Trains Are Operated</caption>
+				<thead>
+				<tr>
+					<th scope="col">S.NO</th>
+					
+					<th scope="col">Station Name</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+			<%
+				StationDAO stationDAO = new StationDAO();
+				List<Station> station = stationDAO.getStationList(trainNumber);
+				int i=0;
+				for(Station stationName:station){
+					i++;
+					
+			%>
+			<tr>
+					<td><%=i%></td>
+					
+					
+					<td><%=stationName.getStationName()%></td>
+					
+			</tr>
 			
-
-				
-		</form>
+			<% } %>
+			</tbody>	
+	
 			
-	</main>
+</main>
 </body>
 </html>

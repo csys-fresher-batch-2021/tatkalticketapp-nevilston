@@ -1,6 +1,15 @@
 package in.nevil.model;
 
 public class Train {
+	@Override
+	public String toString() {
+		return "Train [trainTimeing=" + trainTimeing + ", trainName=" + trainName + ", trainNumber=" + trainNumber
+				+ ", trainFare=" + trainFare + ", availableTickets=" + availableTickets + "]";
+	}
+
+
+
+	private String trainTimeing;
 	private  String trainName;
 	private  String trainNumber;
 	public int getTrainFare() {
@@ -25,15 +34,24 @@ public class Train {
 
 	private  int availableTickets;
 
-	public Train(String trainName, String trainNumber, int avilableTickets , int trainFare ) {
+	public Train(String trainName, String trainNumber, int avilableTickets , int trainFare,String trainTiming ) {
 		this.trainName = trainName;
 		this.trainNumber = trainNumber;
 		this.availableTickets = avilableTickets;
 		this.trainFare=trainFare;
+		this.trainTimeing=trainTiming;
 	}
 
 	public Train() {
 		// Default constructor
+	}
+
+	public String getTrainTimeing() {
+		return trainTimeing;
+	}
+
+	public void setTrainTimeing(String trainTimeing) {
+		this.trainTimeing = trainTimeing;
 	}
 	
 }

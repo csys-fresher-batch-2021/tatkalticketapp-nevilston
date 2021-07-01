@@ -17,7 +17,6 @@ public class DateValidator {
 		LocalDate todayDate = LocalDate.now();
 		LocalDate userJourneyDate = LocalDate.parse(journeyDate);
 		LocalDate afterDate = todayDate.plusDays(1);
-
 		boolean isValid = false;
 		if (todayDate.isBefore(userJourneyDate) && (userJourneyDate.isEqual(afterDate))) {
 			isValid = true;
