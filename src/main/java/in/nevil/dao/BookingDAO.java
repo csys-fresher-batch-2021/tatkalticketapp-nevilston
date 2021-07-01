@@ -33,8 +33,8 @@ public class BookingDAO {
 			pst.setString(8, booking.getJourneyTime());
 			pst.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}finally {
+			e.getMessage();
+		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
@@ -67,7 +67,7 @@ public class BookingDAO {
 				bookedDetails.add(booking);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}

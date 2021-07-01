@@ -7,8 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import in.nevil.util.ConnectionUtil;
+
 import in.nevil.model.User;
+import in.nevil.util.ConnectionUtil;
 
 public class UserDAO {
 
@@ -24,7 +25,7 @@ public class UserDAO {
 			pst.setString(3, user.getUserPassword());
 			pst.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -71,7 +72,7 @@ public class UserDAO {
 				userId = rs.getInt("user_id");
 			}
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}

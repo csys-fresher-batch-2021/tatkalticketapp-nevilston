@@ -11,7 +11,7 @@ import in.nevil.model.Station;
 import in.nevil.util.ConnectionUtil;
 
 public class StationDAO {
-	
+
 	public List<Station> getStationList(String trainNumber){
 		List<Station> stationList = new ArrayList<>();
 		PreparedStatement pst = null;
@@ -31,11 +31,11 @@ public class StationDAO {
 				stationList.add(station);
 			}
 		}catch(ClassNotFoundException |SQLException e) {
-				e.printStackTrace();
-			}finally {
-				ConnectionUtil.close(rs, pst, connection);
-			}
-		
+			e.getMessage();
+		}finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+
 		return stationList;
 	}
 }
